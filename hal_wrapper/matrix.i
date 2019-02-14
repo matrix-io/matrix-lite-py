@@ -3,8 +3,8 @@
 %{
 // #include "matrix.h"
 extern int fact(int n);
-// extern void ledTest();
+extern int ledTest();
 %}
 
 extern int fact(int n);
-// extern void ledTest();
+extern int ledTest();

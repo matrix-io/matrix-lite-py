@@ -9,7 +9,7 @@ all:
 	#compile
 	gcc -O2 -fPIC -c -o build/matrix.o -std=gnu++11 -fno-threadsafe-statics hal_wrapper/matrix.cpp
 	gcc -O2 -fPIC -c -o build/matrix_wrap.o -std=gnu++11 -fno-threadsafe-statics hal_wrapper/matrix_wrap.cxx -I/usr/include/python3.5m
-	gcc -shared -std=gnu++11 -fno-threadsafe-statics build/matrix.o build/matrix_wrap.o -o build/_matrix.so
+	gcc -lmatrix_creator_hal -shared -std=gnu++11 -fno-threadsafe-statics build/matrix.o build/matrix_wrap.o -o build/_matrix.so
 
 	# remove generated wrap
 	rm hal_wrapper/matrix_wrap.cxx;

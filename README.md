@@ -29,8 +29,15 @@ sudo apt-get install python3-pip
 ## 1. Install MATRIX HAL
 https://matrix-io.github.io/matrix-documentation/matrix-hal/getting-started/installation-package/
 
-## 2. Clone the repository
+## 2. Clone & Build the repository
+This will compile the C++ wrapper for HAL.
 ```
 git clone https://github.com/matrix-io/matrix-lite-py
+cd matrix-lite-py
+make
+```
+## 3. Run the python script
+```
+python3 matrix-lite.py
 ```
 

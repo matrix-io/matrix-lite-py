@@ -1,10 +1,11 @@
 %module matrix
 
 %{
-// #include "matrix.h"
-extern int fact(int n);
-extern int ledTest();
+#include "matrix.h"
+#include "./drivers/everloop.h"
 %}
 
-extern int fact(int n);
-extern int ledTest();
+// MATRIX structure
+%include "matrix.h"
+%include "./drivers/everloop.h"
+

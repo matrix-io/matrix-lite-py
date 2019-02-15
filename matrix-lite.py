@@ -1,4 +1,11 @@
 import build.matrix as hal
 
-print(hal.fact(123))
-print(hal.ledTest())
+# Print exported objects/functions
+print(dir(hal))
+
+# LED test
+led = hal.everloop()
+print(led.ledCount())
+
+ready = input("Ready to change LEDs? ")
+led.ledTest()

@@ -1,3 +1,6 @@
 {
-  "python.pythonPath": "/usr/bin/python"
+  "python.pythonPath": "/usr/bin/python",
+  "files.associations": {
+    "iostream": "cpp"
+  }
 }

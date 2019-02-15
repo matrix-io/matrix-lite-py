@@ -6,4 +6,13 @@
 // Global object for MATRIX hardware communication
 extern matrix_hal::MatrixIOBus bus;
 
+class matrix {
+    public:
+    matrix();
+    ~matrix();
+
+    void ledTest();
+    void speak();
+};
+
 #endif

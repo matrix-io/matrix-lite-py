@@ -4,8 +4,14 @@ import build.matrix as hal
 print(dir(hal))
 
 # LED test
-led = hal.everloop()
-print(led.ledCount())
+everloop = hal.everloop()
+print(everloop.ledCount)
 
-ready = input("Ready to change LEDs? ")
-led.ledTest()
+# LED Class test
+led = hal.led()
+led.r = 1
+led.g = 0
+led.b = 1
+led.w = 0
+
+everloop.ledTest(led)

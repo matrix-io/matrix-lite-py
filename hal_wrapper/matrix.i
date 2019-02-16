@@ -5,7 +5,6 @@
 #include "./drivers/everloop.h"
 %}
 
-// MATRIX structure
+// Exposes everything in header files
 %include "matrix.h"
 %include "./drivers/everloop.h"
-

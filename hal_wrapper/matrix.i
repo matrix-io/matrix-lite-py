@@ -5,6 +5,11 @@
 #include "./drivers/everloop.h"
 %}
 
-// Exposes everything in header files
+// Array templates (template names are irrelevant)
+%include "std_vector.i"
+%template(everloopImage) std::vector<led>;// array of leds
+// %template(integerList) std::vector<int>; // array of ints
+
+// Exposes header files
 %include "matrix.h"
 %include "./drivers/everloop.h"

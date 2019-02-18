@@ -4,15 +4,17 @@
 #include "matrix_hal/everloop.h"
 #include "matrix_hal/everloop_image.h"
 
+// Proxy class for everloop parameter
 class led {
     public:
     led();
+    led(int red, int green, int blue, int white);
+    
     ~led();
 
     int r, g, b, w;
-
-    void colorPrint();
 };
+
 
 class everloop {
     public:
@@ -20,7 +22,7 @@ class everloop {
     ~everloop();
 
     int ledCount;
-    void ledTest(led color);
+    void ledTest(std::vector <led> x);
 };
 
 #endif

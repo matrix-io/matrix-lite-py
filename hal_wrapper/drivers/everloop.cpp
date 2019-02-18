@@ -2,23 +2,28 @@
 #include "../matrix.h"
 #include "matrix_hal/everloop.h"
 #include "matrix_hal/everloop_image.h"
-#include <iostream>                                                             
+#include <iostream>
+#include <stdexcept>
+
 
 // LED //
-led::led(){}
-led::~led(){}
-
-void led::colorPrint(){
-    std::cout << "Red: " << r << std::endl;
-    std::cout << "Green: " << g << std::endl;
-    std::cout << "Blue: " << b << std::endl;
-    std::cout << "White: " << w << std::endl;
+led::led(int red, int green, int blue, int white){
+    r = red;
+    g = green;
+    b = blue;
+    w = white;
 }
+led::led(){
+    r = 0;
+    g = 0;
+    b = 0;
+    w = 0;
+}
+led::~led(){}
 
 // EVERLOOP //
 matrix_hal::Everloop hal_everloop;
 
-// constructor
 everloop::everloop(){
     // setup hal everloop
     hal_everloop.Setup(&bus);
@@ -27,19 +32,28 @@ everloop::everloop(){
     ledCount = bus.MatrixLeds();
 }
 
-// deconstructor
 everloop::~everloop(){} 
 
 // - test LED color change
-void everloop::ledTest(led color){
-    matrix_hal::EverloopImage everloop_image(everloop::ledCount);
+void everloop::ledTest(std::vector <led> ledState){
+    int ledsSet = ledState.size();
 
-    for (matrix_hal::LedValue &led : everloop_image.leds) {
-        led.red = color.r;
-        led.green = color.g;
-        led.blue = color.b;
-        led.white = color.w;
+    // Throw, if too many LEDs configured
+    if (everloop::ledCount < ledsSet){
+        std::string text = "Index out of bounds. Device LED count: ";
+        text += std::to_string(everloop::ledCount);
+        throw std::runtime_error(text);
     }
 
+    // Create everloop image
+    matrix_hal::EverloopImage everloop_image(everloop::ledCount);
+    for (int i = 0; i < ledsSet; i++){
+        everloop_image.leds[i].red = ledState[i].r;
+        everloop_image.leds[i].green = ledState[i].g;
+        everloop_image.leds[i].blue = ledState[i].b;
+        everloop_image.leds[i].white = ledState[i].w;
+    }
+
+    // Render image
     hal_everloop.Write(&everloop_image);
 }

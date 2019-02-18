@@ -12,6 +12,7 @@ imu::imu(){
 }
 imu::~imu(){}
 
+// - Returns sensor data
 imu_struct imu::read(){
     imu_struct data;
 

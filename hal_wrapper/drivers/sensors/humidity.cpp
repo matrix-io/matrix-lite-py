@@ -12,6 +12,7 @@ humidity::humidity(){
 }
 humidity::~humidity(){}
 
+// - Returns sensor data
 humidity_struct humidity::read(){
     humidity_struct data;
 

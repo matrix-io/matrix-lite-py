@@ -12,6 +12,7 @@ uv::uv(){
 }
 uv::~uv(){}
 
+// - Returns sensor data
 uv_struct uv::read(){
     uv_struct data;
 

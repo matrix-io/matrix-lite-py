@@ -56,4 +56,19 @@ class humidity {
     humidity_struct read();
 };
 
+// Pressure //
+struct pressure_struct {
+    float altitude;
+    float pressure;
+    float temperature;
+};
+
+class pressure {
+    public:
+    pressure();
+    ~pressure();
+
+    pressure_struct read();
+};
+
 #endif

@@ -10,8 +10,8 @@ everloop = hal.everloop()
 
 leds = []
 for i in range(everloop.ledCount):
-  led = hal.led(0,0,1,0)#led.r led.g led.b led.w
-  leds.append(led)
+    led = hal.led(0,0,1,0)#led.r led.g led.b led.w
+    leds.append(led)
 
 everloop.set(leds)
 
@@ -19,8 +19,8 @@ everloop.set(leds)
 # imu = hal.imu()
 # while True:
 #     data = imu.read()
-#     print ("accelerometer: (xyz)",data.accel_x, data.accel_y, data.accel_z)
-#     print ("gyroscope: (xyz)",data.gyro_x, data.gyro_y, data.gyro_z)
+#     print ("Accelerometer: (xyz)",data.accel_x, data.accel_y, data.accel_z)
+#     print ("Gyroscope: (xyz)",data.gyro_x, data.gyro_y, data.gyro_z)
 #     print ("Magnetometer:(xyz)", data.mag_x, data.mag_y, data.mag_z)
 #     print ("Yaw Pitch Roll:", data.yaw, data.pitch, data.roll)
 #     sleep(0.05)
@@ -33,9 +33,18 @@ everloop.set(leds)
 #     sleep(0.05)
 
 ## Humidity Example ##
-humidity = hal.humidity()
-while True:
-    data = humidity.read()
-    print("Humidity", data.humidity)
-    print("Temperature", data.temperature)
-    sleep(0.05)
+# humidity = hal.humidity()
+# while True:
+#     data = humidity.read()
+#     print("Humidity: ", data.humidity)
+#     print("Temperature: ", data.temperature)
+#     sleep(0.05)
+
+## Pressure Example ##
+# pressure = hal.pressure()
+# while True:
+#     data = pressure.read()
+#     print("Altitude: ", data.altitude)
+#     print("Pressure: ", data.pressure)
+#     print("Temperature: ", data.temperature)
+#     sleep(0.05)

@@ -42,4 +42,18 @@ class uv {
     uv_struct read();
 };
 
+// Humidity //
+struct humidity_struct {
+    float humidity;
+    float temperature;
+};
+
+class humidity {
+    public:
+    humidity();
+    ~humidity();
+
+    humidity_struct read();
+};
+
 #endif

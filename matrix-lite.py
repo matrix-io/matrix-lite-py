@@ -10,11 +10,7 @@ everloop = hal.everloop()
 
 leds = []
 for i in range(everloop.ledCount):
-  led = hal.led(0,0,1,0)
-  # led.r = 1
-  # led.g = 0
-  # led.b = 1
-  # led.w = 0
+  led = hal.led(0,0,1,0)#led.r led.g led.b led.w
   leds.append(led)
 
 everloop.set(leds)
@@ -22,16 +18,24 @@ everloop.set(leds)
 ## IMU Example ##
 # imu = hal.imu()
 # while True:
-#     imuData = imu.read()
-#     print ("accelerometer: (xyz)",imuData.accel_x, imuData.accel_y, imuData.accel_z)
-#     print ("gyroscope: (xyz)",imuData.gyro_x, imuData.gyro_y, imuData.gyro_z)
-#     print ("Magnetometer:(xyz)", imuData.mag_x, imuData.mag_y, imuData.mag_z)
-#     print ("Yaw Pitch Roll:", imuData.yaw, imuData.pitch, imuData.roll)
+#     data = imu.read()
+#     print ("accelerometer: (xyz)",data.accel_x, data.accel_y, data.accel_z)
+#     print ("gyroscope: (xyz)",data.gyro_x, data.gyro_y, data.gyro_z)
+#     print ("Magnetometer:(xyz)", data.mag_x, data.mag_y, data.mag_z)
+#     print ("Yaw Pitch Roll:", data.yaw, data.pitch, data.roll)
 #     sleep(0.05)
 
 ## UV Example ##
-uv = hal.uv()
+# uv = hal.uv()
+# while True:
+#     data = uv.read()
+#     print ("UV: ", data.uv)
+#     sleep(0.05)
+
+## Humidity Example ##
+humidity = hal.humidity()
 while True:
-    uvData = uv.read()
-    print ("UV: ", uvData.uv)
+    data = humidity.read()
+    print("Humidity", data.humidity)
+    print("Temperature", data.temperature)
     sleep(0.05)

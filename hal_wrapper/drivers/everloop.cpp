@@ -2,9 +2,9 @@
 #include "../matrix.h"
 #include "matrix_hal/everloop.h"
 #include "matrix_hal/everloop_image.h"
-#include <iostream>
 #include <stdexcept>
 
+matrix_hal::Everloop hal_everloop;
 
 // LED //
 led::led(int red, int green, int blue, int white){
@@ -22,8 +22,6 @@ led::led(){
 led::~led(){}
 
 // EVERLOOP //
-matrix_hal::Everloop hal_everloop;
-
 everloop::everloop(){
     // setup hal everloop
     hal_everloop.Setup(&bus);
@@ -31,11 +29,10 @@ everloop::everloop(){
     // get number device LEDs
     ledCount = bus.MatrixLeds();
 }
-
 everloop::~everloop(){} 
 
 // - test LED color change
-void everloop::ledTest(std::vector <led> ledState){
+void everloop::set(std::vector <led> ledState){
     int ledsSet = ledState.size();
 
     // Throw, if too many LEDs configured
@@ -54,6 +51,6 @@ void everloop::ledTest(std::vector <led> ledState){
         everloop_image.leds[i].white = ledState[i].w;
     }
 
-    // Render image
+    // Render everloop image
     hal_everloop.Write(&everloop_image);
 }

@@ -7,9 +7,8 @@
 // Proxy class for everloop parameter
 class led {
     public:
-    led();
     led(int red, int green, int blue, int white);
-    
+    led();
     ~led();
 
     int r, g, b, w;
@@ -22,7 +21,7 @@ class everloop {
     ~everloop();
 
     int ledCount;
-    void ledTest(std::vector <led> x);
+    void set(std::vector <led> x);
 };
 
 #endif

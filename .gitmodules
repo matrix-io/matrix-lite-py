@@ -1,0 +1,3 @@
+[submodule "matrix-hal-swig"]
+	path = matrix-hal-swig
+	url = https://github.com/matrix-io/matrix-hal-swig

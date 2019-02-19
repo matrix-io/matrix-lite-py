@@ -30,12 +30,19 @@ sudo apt-get install python3-pip
 https://matrix-io.github.io/matrix-documentation/matrix-hal/getting-started/installation-package/
 
 ## 2. Clone & Build the repository
-This will compile the C++ wrapper for HAL.
+This will compile SWIG wrapper for HAL.
 ```
-git clone https://github.com/matrix-io/matrix-lite-py
+git clone --recurse-submodules https://github.com/matrix-io/matrix-lite-py
 cd matrix-lite-py
 make
 ```
+<!-- 
+longer git clone alternative:
+git clone https://github.com/matrix-io/matrix-lite-py
+git submodule init
+git submodule update 
+-->
+
 ## 3. Run the python script
 ```
 python3 matrix-lite.py

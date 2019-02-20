@@ -2,7 +2,9 @@
 **Under Development**
 
 # Roadmap
-This roadmap is for achieving a basic implementation of the checklist below. **As this package develops, the API will improve and may change.**
+This roadmap is for creating a library out of the checklist below. [swigExamples.py](swigExamples.py) will contain examples of the direct [SWIG](https://github.com/matrix-io/matrix-hal-swig/tree/c66eebc4318f3f9147649a617cf0d708575bfac8) implementations.
+
+> **As this package develops, the API will improve and may change.**
 - [ ] Leds
 - [ ] Sensors
   - [ ] IMU

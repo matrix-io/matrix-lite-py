@@ -45,6 +45,6 @@ git submodule update
 
 ## 3. Run the python script
 ```
-python3 matrix-lite.py
+python3 swigExamples.py
 ```
 

@@ -52,9 +52,15 @@ everloop.set(leds)
 ## GPIO ##
 gpio = hal.gpio()
 print(dir(gpio))
-print(gpio.setMode(0,0))
-print(gpio.setFunction(0,0))
 
+# turn pin 1 on
+gpio.setMode(1,1)
+gpio.setFunction(1,0)
+gpio.setDigital(1,1)
+
+# read pin 0
+gpio.setMode(0,0)
+gpio.setFunction(0,0)
 while True:
     print(gpio.getValue(0))
     sleep(0.05)

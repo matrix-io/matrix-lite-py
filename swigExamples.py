@@ -50,17 +50,26 @@ everloop.set(leds)
 #     sleep(0.05)
 
 ## GPIO ##
-gpio = hal.gpio()
-print(dir(gpio))
+# gpio = hal.gpio()
 
-# turn pin 1 on
-gpio.setMode(1,1)
-gpio.setFunction(1,0)
-gpio.setDigital(1,1)
+# # turn pin 0 on
+# gpio.setMode(0,1)
+# gpio.setFunction(0,0)
+# gpio.setDigital(0,1)
 
-# read pin 0
-gpio.setMode(0,0)
-gpio.setFunction(0,0)
-while True:
-    print(gpio.getValue(0))
-    sleep(0.05)
+# # change pin 1 servo angle
+# gpio.setMode(1,1)
+# gpio.setFunction(1,1)
+# gpio.setServoAngle(1, 0, 0.6)
+
+# # edit pin 2 PWM
+# gpio.setMode(2,1)
+# gpio.setFunction(2,1)
+# gpio.setPWM(2, 25, 50)
+
+# # read pin 3
+# gpio.setMode(3,0)
+# gpio.setFunction(3,0)
+# while True:
+#     print(gpio.getValue(3))
+#     sleep(0.05)

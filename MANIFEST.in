@@ -1,0 +1,8 @@
+recursive-include matrix-hal-swig *.cpp
+recursive-include include *.h
+
+recursive-include matrix-hal-swig/drivers *.cpp
+recursive-include include *.h
+
+recursive-include matrix-hal-swig/drivers.sensors *.cpp
+recursive-include include *.h

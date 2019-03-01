@@ -1,5 +1,10 @@
 .DS_Store
 ._.DS_Store
 __pycache__
+
+# verify items below before production
 build
 matrix_wrap.cxx
+_matrix.cpython-35m-arm-linux-gnueabihf.so
+matrix.py
+_matrix.so

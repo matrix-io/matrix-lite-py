@@ -20,7 +20,7 @@ extra_compile_args += [
     "-lmatrix_creator_hal",
     "-shared",
     "-I/usr/include/python3.5m",
-    "-c"
+    "-c",
 ]
 
 
@@ -31,7 +31,6 @@ matrix_module = Extension('_matrix',
     swig_opts=("-c++"),
     extra_compile_args=extra_compile_args,
     language='c++11',
-    
 )
 
 setup (name = 'matrix',

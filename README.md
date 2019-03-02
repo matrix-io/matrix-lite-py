@@ -36,7 +36,21 @@ This will compile SWIG wrapper for HAL.
 ```
 git clone --recurse-submodules https://github.com/matrix-io/matrix-lite-py
 cd matrix-lite-py
-make
+
+
+# swig -python -py3 -c++ -outdir halWrapper matrix-hal-swig/matrix.i
+# python3 setup.py build_ext --build-lib matrix-hal-wrap
+
+# mkdir -p halWrapper
+# swig -python -py3 -c++ -outcurrentdir matrix-hal-swig/matrix.i
+# mv matrix_wrap.cxx matrix-hal-swig
+# python3 setup.py build_ext --inplace
+
+## Winning Compiling Steps! ##
+mkdir -p swigBuild
+swig -python -py3 -c++ -outdir swigBuild matrix-hal-swig/matrix.i
+python3 setup.py build_ext -b swigBuild -t swigBuild
+
 ```
 <!-- 
 longer git clone alternative:

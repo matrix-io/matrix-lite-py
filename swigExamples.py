@@ -1,6 +1,5 @@
-import matrix as hal
+import swigBuild.matrix as hal
 from time import sleep
-
 
 # Print exported objects/functions
 print(dir(hal))

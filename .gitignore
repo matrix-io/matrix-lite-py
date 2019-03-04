@@ -3,9 +3,9 @@
 __pycache__
 
 # verify items below before production
-build
-matrix_wrap.cxx
-_matrix.cpython-35m-arm-linux-gnueabihf.so
-matrix.py
-_matrix.so
+# build
+# matrix_wrap.cxx
+# _matrix.cpython-35m-arm-linux-gnueabihf.so
+# matrix.py
+# _matrix.so
 swigBuild

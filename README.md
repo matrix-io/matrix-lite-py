@@ -38,18 +38,10 @@ git clone --recurse-submodules https://github.com/matrix-io/matrix-lite-py
 cd matrix-lite-py
 
 
-# swig -python -py3 -c++ -outdir halWrapper matrix-hal-swig/matrix.i
-# python3 setup.py build_ext --build-lib matrix-hal-wrap
-
-# mkdir -p halWrapper
-# swig -python -py3 -c++ -outcurrentdir matrix-hal-swig/matrix.i
-# mv matrix_wrap.cxx matrix-hal-swig
-# python3 setup.py build_ext --inplace
-
-## Winning Compiling Steps! ##
-mkdir -p swigBuild
-swig -python -py3 -c++ -outdir swigBuild matrix-hal-swig/matrix.i
-python3 setup.py build_ext -b swigBuild -t swigBuild
+sudo rm -r build dist/ matrix.egg-info matrix_io matrix_lite.egg-info
+mkdir -p matrix_io
+swig -python -py3 -c++ -outdir matrix_io matrix-hal-swig/matrix.i
+python3 setup.py sdist bdist_wheel && sudo rm -r build dist
 
 ```
 <!-- 
@@ -63,4 +55,3 @@ git submodule update
 ```
 python3 swigExamples.py
 ```
-

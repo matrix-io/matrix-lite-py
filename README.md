@@ -4,7 +4,7 @@
 # Roadmap
 This roadmap is for creating a library out of the checklist below. [swigExamples.py](swigExamples.py) will contain examples of the direct [SWIG](https://github.com/matrix-io/matrix-hal-swig/tree/c66eebc4318f3f9147649a617cf0d708575bfac8) implementations.
 
-> **As this package develops, the API will improve and may change.**
+> **As this package develops, the API will improve and change.**
 - [ ] Leds
 - [ ] Sensors
   - [ ] IMU
@@ -38,10 +38,10 @@ git clone --recurse-submodules https://github.com/matrix-io/matrix-lite-py
 cd matrix-lite-py
 
 
-sudo rm -r build dist/ matrix.egg-info matrix_io matrix_lite.egg-info
-mkdir -p matrix_io
-swig -python -py3 -c++ -outdir matrix_io matrix-hal-swig/matrix.i
-python3 setup.py sdist bdist_wheel && sudo rm -r build dist
+sudo rm -r build dist/ matrix.egg-info build matrix_lite.egg-info
+mkdir -p build
+swig -python -py3 -c++ -outdir build matrix-hal-swig/matrix.i
+python3 setup.py sdist bdist_wheel
 
 ```
 <!-- 

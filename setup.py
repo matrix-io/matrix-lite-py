@@ -18,11 +18,7 @@ def getCppFiles(folders):
 
 # Module dependencies
 matrix_module = Extension('_halSwig',
-    sources = getCppFiles([
-        'matrix-hal-swig', 
-        'matrix-hal-swig/drivers', 
-        'matrix-hal-swig/drivers/sensors']
-    ),
+    sources = getCppFiles(['matrix-hal-swig', 'matrix-hal-swig/drivers', 'matrix-hal-swig/drivers/sensors']),
     libraries=['matrix_creator_hal'],
 )
 
@@ -31,12 +27,9 @@ setup (name = 'matrix_lite_py',
        version = '0.0.1',
        author      = "MATRIX Labs",
        description = """Simple swig matrix from docs""",
-       py_modules = ["matrix_lite.led"],
-    #    packages = find_packages(),
+       packages = ["matrix_lite"],
        ext_modules = [matrix_module],
-       options = {'build':{'build_lib':'matrix_io', 'build_temp':'matrix_io'}},
-    #    namespace_packages=['matrix_io'],
-
+       options = {'build':{'build_lib':'build', 'build_temp':'build'}},
        zip_safe = False,
        )
 

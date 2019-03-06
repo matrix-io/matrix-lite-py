@@ -1,4 +1,4 @@
-import swigBuild.matrix as hal
+import halSwig as hal
 from time import sleep
 
 # Print exported objects/functions
@@ -15,14 +15,14 @@ for i in range(everloop.ledCount):
 everloop.set(leds)
 
 ## IMU Example ##
-imu = hal.imu()
-while True:
-    data = imu.read()
-    print ("Accelerometer: (xyz)",data.accel_x, data.accel_y, data.accel_z)
-    print ("Gyroscope: (xyz)",data.gyro_x, data.gyro_y, data.gyro_z)
-    print ("Magnetometer:(xyz)", data.mag_x, data.mag_y, data.mag_z)
-    print ("Yaw Pitch Roll:", data.yaw, data.pitch, data.roll)
-    sleep(0.05)
+# imu = hal.imu()
+# while True:
+#     data = imu.read()
+#     print ("Accelerometer: (xyz)",data.accel_x, data.accel_y, data.accel_z)
+#     print ("Gyroscope: (xyz)",data.gyro_x, data.gyro_y, data.gyro_z)
+#     print ("Magnetometer:(xyz)", data.mag_x, data.mag_y, data.mag_z)
+#     print ("Yaw Pitch Roll:", data.yaw, data.pitch, data.roll)
+#     sleep(0.05)
 
 ## UV Example ##
 # uv = hal.uv()

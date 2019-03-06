@@ -6,11 +6,11 @@ This roadmap is for creating a library out of the checklist below. [swigExamples
 
 > **As this package develops, the API will improve and change.**
 - [ ] Leds
-- [ ] Sensors
-  - [ ] IMU
-  - [ ] Humidity
-  - [ ] Pressure
-  - [ ] UV
+- [x] Sensors
+  - [x] IMU
+  - [x] Humidity
+  - [x] Pressure
+  - [x] UV
 - [ ] GPIO
 - [ ] Microphones
   - [ ] Hal Mics

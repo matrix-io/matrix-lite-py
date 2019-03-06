@@ -4,9 +4,7 @@ __pycache__
 .vscode
 
 # verify items below before production
-# build
-# matrix_wrap.cxx
-# _matrix.cpython-35m-arm-linux-gnueabihf.so
-# matrix.py
-# _matrix.so
 swigBuild
+matrix_lite_py.egg-info
+build
+dist

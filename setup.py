@@ -23,17 +23,12 @@ matrix_module = Extension('_halSwig',
 )
 
 # Setup information
-setup (name = 'matrix_lite_py',
+setup (name = 'matrix-lite-py',
        version = '0.0.1',
        author      = "MATRIX Labs",
        description = """Simple swig matrix from docs""",
-       packages = ["matrix_lite"],
+       packages = find_packages(),
        ext_modules = [matrix_module],
        options = {'build':{'build_lib':'build', 'build_temp':'build'}},
        zip_safe = False,
        )
-
-# you should make namespace matrix_io
-#    py_modules = ["matrix"],
-#    ext_modules = [matrix_module],
-# options = {'build':{'build_lib':'swigBuild', 'build_temp':'swigBuild'}},

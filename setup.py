@@ -23,7 +23,7 @@ matrix_module = Extension('_halSwig',
 )
 
 # Setup information
-setup (name = 'matrix-lite-py',
+setup (name = 'matrix-lite',
        version = '0.0.1',
        author      = "MATRIX Labs",
        description = """Simple swig matrix from docs""",

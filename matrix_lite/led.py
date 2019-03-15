@@ -24,28 +24,20 @@ def set(config = None):
 
 # Returns RGBW of inputs: string, tuple, & dict
 def _readColor(color):
-    newColor = {"r":0, "g":0, "b":0, "w":0,}
+    # Handle Object inputs
+    if isinstance(color, object):
+        return color
 
-    # Handle tuple inputs with 0-4 values
-    if isinstance(color, tuple):
-        newColor['r'] = color[0] or 0
-        newColor['g'] = color[1] or 0
-        newColor['b'] = color[2] or 0
-        newColor['w'] = color[3] or 0
-
-        # Previous loop (fix later)
-        # for i, value in enumerate(color):
-        #     # print(newColor.values()[i])
-        #     newColor[list(newColor.keys())[i]] = color[i]
-
-    # Handle string inputs with pypi colour
-    elif isinstance(color, str):
+    rgbw = [0, 0, 0, 0]
+    
+    # Convert string input to tuple input
+    offset = 1
+    if isinstance(color, str):
         color = colour.Color(color).rgb
-        newColor['r'] = int(color[0]*255)
-        newColor['g'] = int(color[1]*255)
-        newColor['b'] = int(color[2]*255)
+        offset = 255 # offset for .rgb decimal return
 
-    # Handle dict inputs
-    # ...
+    # Handle tuple inputs
+    for i, value in enumerate(color):
+        rgbw[i] = int(color[i]*offset)
 
-    print(newColor)
+    return { "r": rgbw[0], "g": rgbw[1], "b": rgbw[2], "w": rgbw[3] }

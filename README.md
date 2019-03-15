@@ -1,4 +1,4 @@
-# MATRIX-Lite-Py
+# MATRIX-Lite-PY
 **Under Development**
 
 # Roadmap
@@ -37,14 +37,12 @@ This will compile SWIG wrapper for HAL.
 git clone --recurse-submodules https://github.com/matrix-io/matrix-lite-py
 cd matrix-lite-py && git checkout cc/pySetup
 cd matrix-hal-swig && git checkout master
+cd ..
 
-
-sudo rm -r build dist/ matrix.egg-info build matrix_lite.egg-info
 mkdir -p build
 swig -python -py3 -c++ -outdir build matrix-hal-swig/matrix.i
 python3 setup.py sdist bdist_wheel
 
-cd ..
 pip3 install dist/matrix_lite-0.0.1-cp35-cp35m-linux_armv7l.whl
 ```
 <!-- 

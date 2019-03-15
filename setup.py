@@ -31,4 +31,5 @@ setup (name = 'matrix-lite',
        ext_modules = [matrix_module],
        options = {'build':{'build_lib':'build', 'build_temp':'build'}},
        zip_safe = False,
+       install_requires=['colour<1']
        )

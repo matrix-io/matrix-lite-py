@@ -25,7 +25,7 @@ def set(config = None):
 # Returns RGBW of inputs: string, tuple, & dict
 def _readColor(color):
     # Handle Object inputs
-    if isinstance(color, object):
+    if isinstance(color, dict):
         return color
 
     rgbw = [0, 0, 0, 0]

@@ -24,19 +24,19 @@ def set(config = None):
 
 # Returns RGBW of inputs: string, tuple, & dict
 def _readColor(color):
-    # Handle Object inputs
+    # Handle dict input
     if isinstance(color, dict):
         return color
 
     rgbw = [0, 0, 0, 0]
     
-    # Convert string input to tuple input
+    # Convert string input to tuple
     offset = 1
     if isinstance(color, str):
         color = colour.Color(color).rgb
         offset = 255 # offset for .rgb decimal return
 
-    # Handle tuple inputs
+    # Handle tuple input
     for i, value in enumerate(color):
         rgbw[i] = int(color[i]*offset)
 

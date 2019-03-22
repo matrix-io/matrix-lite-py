@@ -5,22 +5,30 @@ _everloop = everloop()
 length = _everloop.ledCount
 
 # Sets the current everloop image on MATRIX Device
-def set(config = None):
-    # Determine input type #
-    # Set everloop LEDs for each list value
+def set(config = []):
+    # Sets everloop LEDs for each list item
     if isinstance(config, list):
-        print("You put a list, but this isn't done yet... come back later")
-    # Set everloop as one value
+        # Create LED array with each LED off
+        everloopImage = [led(0,0,0,0)] * length
+        
+        # Assign given colors into the LED array
+        for i in range(0, len(config)):
+            rgbw = _readColor(config[i])
+            everloopImage[i] = led(rgbw['r'],rgbw['g'],rgbw['b'],rgbw['w'])
+        
+        _everloop.set(everloopImage)
+
+    # Sets everloop as one value
     elif isinstance(config, str) or isinstance(config, dict) or isinstance(config, tuple):
         rgbw = _readColor(config)
-        newLed = led(rgbw['r'],rgbw['g'],rgbw['b'],rgbw['w'])
         _everloop.set([led(rgbw['r'],rgbw['g'],rgbw['b'],rgbw['w'])] * length)
-    # Throw error on invalid input
+    
+    # Throws error on invalid input
     else:
         raise Exception("led.set() only accepts a value or list of values from: strings, tuples & dicts")
 
 # Returns RGBW of inputs: string, tuple, & dict
-def _readColor(color):
+def _readColor(color = (0,0,0,0)):
     # Handle dict input
     if isinstance(color, dict):
         return {"r": color.get("r", 0), "g": color.get("g", 0),"b": color.get("b", 0),"w": color.get("w", 0),}

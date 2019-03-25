@@ -11,7 +11,7 @@ This roadmap is for creating a library out of the checklist below. [swigExamples
   - [x] Humidity
   - [x] Pressure
   - [x] UV
-- [ ] GPIO
+- [x] GPIO
 - [ ] Microphones
   - [ ] Hal Mics
   - [ ] Alsa Mics

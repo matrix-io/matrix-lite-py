@@ -1,17 +1,22 @@
-import matrix_lite as matrix
+from matrix_lite import sensors
 import time
 
-print(dir(matrix.led))
+#  Sensors will update with each .read() call
+while True:
+    # Each .read() returns a dictionary
+    print(sensors.imu.read())
+    print(sensors.uv.read())
+    print(sensors.humidity.read())
+    print(sensors.pressure.read())
+
+    time.sleep(0.50)
 
 
-
-# LED Example
-# print("Array size is " + str(matrix.led.length))
-# rgbw = {'b':20}
-# matrix.led.set(["red", "blue", "green"])
-# matrix.led.set(["red", {'r':1}, {}, "", "green"])
-
-# Sensors Example
-# while True:
-#     print(matrix.sensors.imu.read())
-#     time.sleep(0.01)
+# setInterval(function(){
+#   imu = matrix.imu.read();
+#   uv = matrix.uv.read();
+#   humidity = matrix.humidity.read();
+#   pressure = matrix.pressure.read();
+  
+#   console.log(imu, uv, humidity, pressure);
+# },50);

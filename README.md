@@ -30,15 +30,13 @@ sudo apt-get install python3-pip
 ```
 
 ## 3. Install matrix-lite-py
-Download this repository & install the `.whl` file
 ```
-git clone --recurse-submodules https://github.com/matrix-io/matrix-lite-py
-pip3 install matrix-lite-py/dist/matrix_lite-0.0.1-cp35-cp35m-linux_armv7l.whl
+pip3 install -i https://test.pypi.org/simple/ matrix-lite
 ```
 
 
 # Usage (may change in the future)
-The matrix-lite-py package contains a `matrix_lite` & `halSwig` Python module. `halSwig` is the direct SWIG implementation. `matrix_lite` contains abstractions for `halSwig` and is what we will be using.
+The matrix-lite package contains a `matrix_lite` & `halSwig` Python module. `halSwig` is the direct SWIG implementation. `matrix_lite` contains abstractions for `halSwig` and is what we will be using.
 
 ## Everloop
 ```python

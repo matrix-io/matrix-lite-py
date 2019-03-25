@@ -24,8 +24,7 @@ Ensure you have a Raspberry Pi, attached with a MATRIX device, that's flashed wi
 ## 1. Install MATRIX HAL
 https://matrix-io.github.io/matrix-documentation/matrix-hal/getting-started/installation-package/
 
-## 2. Install Python3
-Install pip3
+## 2. Install Python 3
 ```
 sudo apt-get install python3-pip
 ```
@@ -33,12 +32,13 @@ sudo apt-get install python3-pip
 ## 3. Install matrix-lite-py
 Download this repository & install the `.whl` file
 ```
-git clone https://github.com/matrix-io/matrix-lite-py
+git clone --recurse-submodules https://github.com/matrix-io/matrix-lite-py
 pip3 install matrix-lite-py/dist/matrix_lite-0.0.1-cp35-cp35m-linux_armv7l.whl
 ```
 
 
 # Usage (may change in the future)
+The matrix-lite-py package contains a `matrix_lite` & `halSwig` Python module. `halSwig` is the direct SWIG implementation. `matrix_lite` contains abstractions for `halSwig` and is what we will be using.
 
 ## Everloop
 ```python
@@ -93,7 +93,27 @@ while True:
 
 ## GPIO
 ```python
-coming soon...
+### NOT IMPLEMENTED YET ###
+from matrix_lite import gpio
+# Read GPIO pin 0 (digital)
+gpio.setFunction(0, 'DIGITAL')
+gpio.setMode(0, 'input')
+print('Pin 0 is: ' + str(gpio.getDigital(0)))
+
+# Set GPIO pin 1 (digital)
+gpio.setFunction(1, 'DIGITAL')
+gpio.setMode(1, 'output')
+gpio.setDigital(1, 'ON')
+
+# Set GPIO pin 2 (PWM)
+gpio.setFunction(2, 'PWM')
+gpio.setMode(2, 'output')
+gpio.setPWM(2, 25, 50) # pin, percentage, frequency
+
+# Set Servo Angle pin 3
+gpio.setFunction(3, 'PWM')
+gpio.setMode(3, 'output')
+gpio.setServoAngle(3, 90, 0.8) # pin, angle, min_pulse_ms (minimum pulse width for a PWM wave in milliseconds)
 ```
 
 # Building Locally For Development
@@ -122,14 +142,8 @@ swig -python -py3 -c++ -outdir build matrix-hal-swig/matrix.i
 python3 setup.py sdist bdist_wheel
 ```
 Install the new `.whl` file
-
-This file will add a `matrix_lite` & `halSwig` Python Package. `halSwig` is the package that comes out of SWIG & `matrix_lite` uses `halSwig` for its features.
 ```
 pip3 install dist/matrix_lite-0.0.1-cp35-cp35m-linux_armv7l.whl
 ```
-<!-- 
-longer git clone alternative:
-git clone https://github.com/matrix-io/matrix-lite-py
-git submodule init
-git submodule update 
--->
+
+Your Raspberry Pi should now have a `matrix_lite` & `halSwig` module, with your changes, installed.

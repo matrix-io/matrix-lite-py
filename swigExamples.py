@@ -1,3 +1,6 @@
+# swigExamples.py contains example code of the direct SWIG
+# implementation of HAL. liteExamples.py are the recommended examples to follow
+
 import halSwig as hal
 from time import sleep
 

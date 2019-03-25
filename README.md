@@ -31,7 +31,7 @@ sudo apt-get install python3-pip
 
 ## 3. Install matrix-lite-py
 ```
-pip3 install -i https://test.pypi.org/simple/ matrix-lite
+pip3 install matrix-lite
 ```
 
 
@@ -141,7 +141,7 @@ python3 setup.py sdist bdist_wheel
 ```
 Install the new `.whl` file
 ```
-pip3 install dist/matrix_lite-0.0.1-cp35-cp35m-linux_armv7l.whl
+pip3 install dist/*linux_armv7l.whl
 ```
 
 Your Raspberry Pi should now have a `matrix_lite` & `halSwig` module, with your changes, installed.

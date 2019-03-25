@@ -1,5 +1,6 @@
-# swigExamples.py contains example code of the direct SWIG
-# implementation of HAL. liteExamples.py are the recommended examples to follow
+# swigExamples.py contains example code of the direct SWIG implementation of HAL. 
+# matrix-hal-swig repository: https://github.com/matrix-io/matrix-hal-swig
+# Note, the matrix_lite module is what most users are expected to use.
 
 import halSwig as hal
 from time import sleep

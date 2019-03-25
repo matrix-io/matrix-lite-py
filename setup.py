@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 """
-setup.py file for SWIG HAL wrapper
+A wrapper for MATRIX HAL in Python
+See: https://github.com/matrix-io/matrix-lite-py
 """
 import os
 # from distutils.core import setup, Extension
@@ -26,10 +27,17 @@ matrix_module = Extension('_halSwig',
 setup (name = 'matrix-lite',
        version = '0.0.1',
        author      = "MATRIX Labs",
-       description = """Simple swig matrix from docs""",
+       description = """A wrapper for MATRIX HAL in Python""",
        packages = find_packages(),
        ext_modules = [matrix_module],
        options = {'build':{'build_lib':'build', 'build_temp':'build'}},
        zip_safe = False,
-       install_requires=['colour<1']
+       install_requires=['colour<1'],
+        classifiers=[
+            'Programming Language :: Python :: 3',
+            'Programming Language :: Python :: 3.4',
+            'Programming Language :: Python :: 3.5',
+            'Programming Language :: Python :: 3.6',
+            'Programming Language :: Python :: 3.7',
+        ]
        )

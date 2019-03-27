@@ -124,7 +124,7 @@ gpio.setServoAngle({
 ```
 
 # Building Locally For Development
-> Follow the steps in [#Installation](#installation) for the initial dependencies you'll need.
+> Make sure you have [MATRIX HAL](https://matrix-io.github.io/matrix-documentation/matrix-hal/getting-started/installation-package/) & Python 3 installed.
 
 If you want to contribute to matrix-lite-py, below are the steps to build locally. Each step should take place on your Raspberry Pi.
 
@@ -133,7 +133,6 @@ Install SWIG
 sudo apt-get install swig
 ```
 
-## Clone & Build the repository
 Download the repository
 ```
 git clone --recurse-submodules https://github.com/matrix-io/matrix-lite-py

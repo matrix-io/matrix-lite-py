@@ -25,6 +25,7 @@ Ensure you have a Raspberry Pi, attached with a MATRIX device, that's flashed wi
 https://matrix-io.github.io/matrix-documentation/matrix-hal/getting-started/installation-package/
 
 ## 2. Install Python 3
+> To call your scripts with python 3, use `python3 YOUR_SCRIPT.py`
 ```
 sudo apt-get install python3-pip
 ```

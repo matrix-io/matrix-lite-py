@@ -4,7 +4,7 @@ from halSwig import everloop, led
 _everloop = everloop()
 length = _everloop.ledCount
 
-# colors corrected for LED
+# Colors corrected for LED
 colour.COLOR_NAME_TO_RGB["orange"] = (255, 35, 0)
 colour.COLOR_NAME_TO_RGB["hotpink"] = (255, 5, 14)
 colour.COLOR_NAME_TO_RGB["lightblue"] = (0, 50, 255)
@@ -12,7 +12,7 @@ colour.COLOR_NAME_TO_RGB["lightgreen"] = (20, 255, 30)
 
 # Sets the current everloop image on MATRIX Device
 def set(config = []):
-    # Sets everloop LEDs for each list item
+    # Map LED color to array index
     if isinstance(config, list):
         # Create LED array with each LED off
         everloopImage = [led(0,0,0,0)] * length
@@ -24,7 +24,7 @@ def set(config = []):
         
         _everloop.set(everloopImage)
 
-    # Sets everloop as one value
+    # Set each LED to one color
     elif isinstance(config, str) or isinstance(config, dict) or isinstance(config, tuple):
         rgbw = _readColor(config)
         _everloop.set([led(rgbw['r'],rgbw['g'],rgbw['b'],rgbw['w'])] * length)

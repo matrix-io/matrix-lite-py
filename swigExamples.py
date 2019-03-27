@@ -1,6 +1,9 @@
-import build.matrix as hal
-from time import sleep
+# swigExamples.py contains example code of the direct SWIG implementation of HAL. 
+# matrix-hal-swig repository: https://github.com/matrix-io/matrix-hal-swig
+# Note, the matrix_lite module is what most users are expected to use.
 
+import halSwig as hal
+from time import sleep
 
 # Print exported objects/functions
 print(dir(hal))
@@ -10,7 +13,7 @@ everloop = hal.everloop()
 
 leds = []
 for i in range(everloop.ledCount):
-    led = hal.led(0,0,1,0)#led.r led.g led.b led.w
+    led = hal.led(1,0,1,0)#led.r led.g led.b led.w
     leds.append(led)
 
 everloop.set(leds)

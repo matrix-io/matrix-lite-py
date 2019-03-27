@@ -25,7 +25,7 @@ matrix_module = Extension('_halSwig',
 
 # Setup information
 setup (name = 'matrix-lite',
-       version = '0.0.1',
+       version = '0.0.2',
        author = "MATRIX Labs",
        url = 'https://github.com/matrix-io/matrix-lite-py',
        description = """A wrapper for MATRIX HAL in Python""",

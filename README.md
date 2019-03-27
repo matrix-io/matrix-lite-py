@@ -91,7 +91,6 @@ while True:
 
 ## GPIO
 ```python
-### NOT IMPLEMENTED YET ###
 from matrix_lite import gpio
 # Read GPIO pin 0 (digital)
 gpio.setFunction(0, 'DIGITAL')
@@ -106,12 +105,21 @@ gpio.setDigital(1, 'ON')
 # Set GPIO pin 2 (PWM)
 gpio.setFunction(2, 'PWM')
 gpio.setMode(2, 'output')
-gpio.setPWM(2, 25, 50) # pin, percentage, frequency
+gpio.setPWM({
+    "pin": 2,
+    "percentage": 25,
+    "frequency": 50, # min 36
+})
 
 # Set Servo Angle pin 3
 gpio.setFunction(3, 'PWM')
 gpio.setMode(3, 'output')
-gpio.setServoAngle(3, 90, 0.8) # pin, angle, min_pulse_ms (minimum pulse width for a PWM wave in milliseconds)
+gpio.setServoAngle({
+    "pin": 3,
+    "angle": 90,
+    # pin, angle, min_pulse_ms (minimum pulse width for a PWM wave in milliseconds)
+    "min_pulse_ms": 0.8,
+})
 ```
 
 # Building Locally For Development

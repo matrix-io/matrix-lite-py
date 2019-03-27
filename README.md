@@ -137,7 +137,7 @@ sudo apt-get install swig
 Download the repository
 ```
 git clone --recurse-submodules https://github.com/matrix-io/matrix-lite-py
-cd matrix-hal-swig && git checkout master
+cd matrix-lite-py/matrix-hal-swig && git checkout master
 cd ..
 ```
 >Use the commands below to compile any new changes you make.

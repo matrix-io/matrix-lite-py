@@ -4,6 +4,12 @@ from halSwig import everloop, led
 _everloop = everloop()
 length = _everloop.ledCount
 
+# colors corrected for LED
+colour.COLOR_NAME_TO_RGB["orange"] = (255, 35, 0)
+colour.COLOR_NAME_TO_RGB["hotpink"] = (255, 5, 14)
+colour.COLOR_NAME_TO_RGB["lightblue"] = (0, 50, 255)
+colour.COLOR_NAME_TO_RGB["lightgreen"] = (20, 255, 30)
+
 # Sets the current everloop image on MATRIX Device
 def set(config = []):
     # Sets everloop LEDs for each list item

@@ -93,6 +93,7 @@ while True:
 ## GPIO
 ```python
 from matrix_lite import gpio
+
 # Read GPIO pin 0 (digital)
 gpio.setFunction(0, 'DIGITAL')
 gpio.setMode(0, 'input')

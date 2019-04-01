@@ -142,7 +142,7 @@ cd ..
 ```
 >Use the commands below to compile any new changes you make.
 
-Build a Python package and generates a .whl file
+Build the Python package and generate a .whl file
 ```
 mkdir -p build
 swig -python -py3 -c++ -outdir build matrix-hal-swig/matrix.i

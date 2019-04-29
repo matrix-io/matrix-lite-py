@@ -29,12 +29,15 @@ https://matrix-io.github.io/matrix-documentation/matrix-hal/getting-started/inst
 ```
 sudo apt-get install python3-pip
 ```
-
-## 3. Install matrix-lite-py
+## 3. Upgrade PIP
 ```
-pip3 install matrix-lite
+python3 -m pip install --upgrade pip
 ```
 
+## 4. Install matrix-lite-py
+```
+python3 -m pip install --user matrix-lite
+```
 
 # Usage (may change in the future)
 The matrix-lite package contains a `matrix_lite` & `halSwig` Python module. `halSwig` is the direct SWIG implementation. `matrix_lite` contains abstractions for `halSwig` and is what we will be using.

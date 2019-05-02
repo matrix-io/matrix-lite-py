@@ -31,7 +31,7 @@ sudo apt-get install python3-pip
 ```
 ## 3. Upgrade PIP
 ```
-python3 -m pip install --upgrade --user pip
+python3 -m pip install --upgrade pip
 ```
 
 ## 4. Install matrix-lite-py

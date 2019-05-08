@@ -1,4 +1,4 @@
-# swigExamples.py contains example code of the direct SWIG implementation of HAL. 
+# swigExamples.py contains example code of the direct SWIG implementation of MATRIX HAL. 
 # matrix-hal-swig repository: https://github.com/matrix-io/matrix-hal-swig
 # Note, the matrix_lite module is what most users are expected to use.
 

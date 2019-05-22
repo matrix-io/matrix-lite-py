@@ -153,7 +153,7 @@ python3 setup.py sdist bdist_wheel
 ```
 Install the new `.whl` file
 ```
-pip3 install dist/*.whl
+python3 -m pip install dist/*.whl
 ```
 
 Your Raspberry Pi should now have a `matrix_lite` & `halSwig` module, with your changes, installed.

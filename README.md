@@ -1,7 +1,7 @@
 # MATRIX-Lite-PY
-**Under Development**
+![](https://api.travis-ci.org/matrix-io/matrix-lite-py.svg?branch=master)
 
-MATRIX Lite PY is a library that allows users of varying skill levels to easily program their MATRIX Device.
+MATRIX Lite Python is a library that allows users of varying skill levels to easily program their MATRIX Device.
 
 # Roadmap
 This roadmap is for achieving a basic implementation of the checklist below. As this package develops, the API will improve and may change

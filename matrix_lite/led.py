@@ -31,7 +31,7 @@ def set(config = []):
     
     # Throws error on invalid input
     else:
-        raise Exception("led.set() only accepts a value or list of values from: strings, tuples & dicts")
+        raise Exception("led.set() accepts a value or list of values from: strings, tuples & dicts")
 
 # Returns RGBW of inputs: string, tuple, & dict
 def _readColor(color = (0,0,0,0)):

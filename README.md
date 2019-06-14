@@ -15,7 +15,7 @@ This roadmap is for achieving a basic implementation of the checklist below. As 
 - [x] GPIO
 - [ ] Microphones
   - [ ] Hal Mics
-  - [ ] Alsa Mics
+  - [ ] Alsa Mics (Any python alsa libraries can interact with the mics)
 
 # Installation
 

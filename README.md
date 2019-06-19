@@ -15,7 +15,7 @@ This roadmap is for achieving a basic implementation of the checklist below. As 
 - [x] GPIO
 - [ ] Microphones
   - [ ] Hal Mics
-  - [x] ALSA Mics available through any [ALSA wrapper](https://matrix-io.github.io/matrix-documentation/matrix-lite/py-reference/alsa-mics/) 
+  - [x] ALSA Mics (available through any [ALSA wrapper](https://matrix-io.github.io/matrix-documentation/matrix-lite/py-reference/alsa-mics/))
 
 # Installation
 

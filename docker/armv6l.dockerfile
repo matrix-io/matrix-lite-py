@@ -1,5 +1,5 @@
 # List of balena arm images https://www.balena.io/docs/reference/base-images/devicetypes/
-FROM balenalib/raspberry-pi-debian-python:3.5.6-stretch-build
+FROM balenalib/raspberry-pi-debian-python:3.7.3-stretch-build
 
 # Starting directory
 WORKDIR /app

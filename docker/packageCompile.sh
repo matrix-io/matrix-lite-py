@@ -1,5 +1,7 @@
 #!/bin/bash
-## Script for docker to compile library package(s) ##
+
+# Initialize matrix-hal-swig submodule
+git submodule update --init --recursive
 
 # Pretend boot files exists
 touch /boot/config.txt
@@ -12,20 +14,29 @@ echo "deb https://apt.matrix.one/raspbian stretch main" | sudo tee /etc/apt/sour
 # Raspberry Pi Dependencies
 sudo apt-get install -y apt-transport-https systemd swig
 sudo apt-get update
-sudo apt-get -y upgrade
 
 # MATRIX Dependencies
 sudo apt-get install -y matrixio-creator-init libmatrixio-creator-hal libmatrixio-creator-hal-dev
 
-# Download MATRIX Lite Python
-git clone --recurse-submodules https://github.com/matrix-io/matrix-lite-py
-cd matrix-lite-py
-mkdir -p build
+# Download available Python 3 versions
+sudo apt-get install -y python3.4-dev
+sudo apt-get install -y python3.5-dev
 
-# Compile MATRIX Lite Python
-python3 -m pip install wheel
-swig -python -py3 -c++ -outdir build matrix-hal-swig/matrix.i
-python3 setup.py sdist bdist_wheel
+# Compile matrix-lite for desired Python 3 versions
+compile_lite () {
+    # create python3.x enviorment
+    virtualenv -p python$1 --clear env && source env/bin/activate
+    # compile matrix-lite-py
+    mkdir -p build
+    swig -python -py3 -c++ -outdir build matrix-hal-swig/matrix.i
+    python3 setup.py sdist bdist_wheel
+    # export compiled library to shared volume
+    cp dist/* /volume
+    # cleanup changes
+    deactivate
+    git reset --hard && git add . && git clean -fdX
+}
 
-# Move files into shared volume
-cp dist/* /volume
+compile_lite 3.4
+compile_lite 3.5
+compile_lite 3.7

@@ -35,4 +35,4 @@ install:
 # upload all pypi packages
 script:
 - ls ~/pypi_packages
-- twine upload ~/pypi_packages/*
+- twine upload --skip-existing ~/pypi_packages/*

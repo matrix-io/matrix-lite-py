@@ -4,8 +4,6 @@
 MATRIX Lite Python is a library that allows users of varying skill levels to easily program their MATRIX Device.
 
 # Roadmap
-This roadmap is for achieving a basic implementation of the checklist below. As this package develops, the API will improve and may change
-
 - [x] Leds
 - [x] Sensors
   - [x] IMU

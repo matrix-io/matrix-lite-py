@@ -1,19 +1,21 @@
+# Transitioning from SWIG to PyBind11
+
 # MATRIX-Lite-Py
 [![Build Status](https://travis-ci.org/matrix-io/matrix-lite-py.svg?branch=master)](https://travis-ci.org/matrix-io/matrix-lite-py)
 
 MATRIX Lite Python is a library that allows users of varying skill levels to easily program their MATRIX Device.
 
 # Roadmap
-- [x] Leds
-- [x] Sensors
-  - [x] IMU
-  - [x] Humidity
-  - [x] Pressure
-  - [x] UV
-- [x] GPIO
+- [ ] Leds
+- [ ] Sensors
+  - [ ] IMU
+  - [ ] Humidity
+  - [ ] Pressure
+  - [ ] UV
+- [ ] GPIO
 - [ ] Microphones
   - [ ] Hal Mics
-  - [x] ALSA Mics (available through any [ALSA wrapper](https://matrix-io.github.io/matrix-documentation/matrix-lite/py-reference/alsa-mics/))
+  - [ ] ALSA Mics (available through any [ALSA wrapper](https://matrix-io.github.io/matrix-documentation/matrix-lite/py-reference/alsa-mics/))
 
 # Installation
 
@@ -130,28 +132,17 @@ gpio.setServoAngle({
 
 If you want to contribute to matrix-lite-py, below are the steps to build locally. Each step should take place on your Raspberry Pi.
 
-Install SWIG 
-```bash
-sudo apt-get install swig
-```
-
 Download the repository
 ```
-git clone --recurse-submodules https://github.com/matrix-io/matrix-lite-py
-cd matrix-lite-py/matrix-hal-swig && git checkout master
-cd ..
+git clone https://github.com/matrix-io/matrix-lite-py
 ```
 >Use the commands below to compile any new changes you make.
 
 Build the Python package and generate a .whl file
 ```
-mkdir -p build
-swig -python -py3 -c++ -outdir build matrix-hal-swig/matrix.i
 python3 setup.py sdist bdist_wheel
 ```
 Install the new `.whl` file
 ```
 python3 -m pip install dist/*.whl
 ```
-
-Your Raspberry Pi should now have a `matrix_lite` & `halSwig` module, with your changes, installed.

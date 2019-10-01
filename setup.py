@@ -1,13 +1,12 @@
-#!/usr/bin/env python
-"""
-A wrapper for MATRIX HAL in Python
-See: https://github.com/matrix-io/matrix-lite-py
-"""
+from setuptools import setup, Extension
+from setuptools.command.build_ext import build_ext
+import sys
+import setuptools
 import os
-# from distutils.core import setup, Extension
-from setuptools import setup, Extension, find_packages
 
-# Grabs all cppFiles
+__version__ = '0.0.4'
+
+# Grabs all cppFiles in a folder
 def getCppFiles(folders):
     files = []
 
@@ -17,26 +16,54 @@ def getCppFiles(folders):
                 files.append(folder + '/' + file) 
     return files
 
-# Module dependencies
-matrix_module = Extension('_halSwig',
-    sources = getCppFiles(['matrix-hal-swig', 'matrix-hal-swig/drivers', 'matrix-hal-swig/drivers/sensors']),
-    libraries=['matrix_creator_hal'],
-)
+ext_modules = [
+    Extension(
+        'hal',
+        sources=getCppFiles(['hal_wrapper', 'hal_wrapper/drivers']),
+        include_dirs=[
+            #TODO: use sample pybind11 include function
+            '/usr/local/include/python3.7',
+        ],
+        libraries=['matrix_creator_hal'],
+        extra_compile_args=[],
+        language='c++'
+    ),
+]
 
-# Setup information
-setup (name = 'matrix-lite',
-       version = '0.0.3',
-       author = "MATRIX Labs",
-       url = 'https://github.com/matrix-io/matrix-lite-py',
-       description = """A wrapper for MATRIX HAL in Python""",
-       packages = find_packages(),
-       ext_modules = [matrix_module],
-       options = {'build':{'build_lib':'build', 'build_temp':'build'}},
-       zip_safe = False,
-       install_requires=['colour<1'],
-        classifiers=[
-            'Programming Language :: Python :: 3.4',
-            'Programming Language :: Python :: 3.5',
-            'Programming Language :: Python :: 3.7',
-        ]
-       )
+class BuildExt(build_ext):
+    """A custom build extension for adding compiler-specific options."""
+    c_opts = {'unix': [],}
+    l_opts = {'unix': [],}
+
+    def build_extensions(self):
+        ct = self.compiler.compiler_type
+        opts = self.c_opts.get(ct, [])
+        link_opts = self.l_opts.get(ct, [])
+
+        # fix extra_compile_args being ignored
+        for arg in ext_modules[0].extra_compile_args: 
+            opts.append(arg)     
+
+        opts.append('-DVERSION_INFO="%s"' % self.distribution.get_version())
+        opts.append('-std=c++11')
+
+        for ext in self.extensions:
+            ext.extra_compile_args = opts
+            ext.extra_link_args = link_opts
+
+        build_ext.build_extensions(self)
+
+setup(
+    name='matrix_lite',
+    version=__version__,
+    author='MATRIX',
+    packages=['matrix_lite',],
+    url='https://github.com/matrix-io/matrix-lite-py',
+    description='A wrapper for MATRIX HAL in Python',
+    long_description='',
+    ext_modules=ext_modules,
+    install_requires=['pybind11>=2.4','colour<1'],
+    setup_requires=['pybind11>=2.4'],
+    cmdclass={'build_ext': BuildExt},
+    zip_safe=False,
+)

@@ -21,7 +21,7 @@ ext_modules = [
         'hal',
         sources=getCppFiles(['hal_wrapper', 'hal_wrapper/drivers']),
         include_dirs=[
-            #TODO: use sample pybind11 include function
+            #TODO: use sample pybind11 include function!
             '/usr/local/include/python3.7',
         ],
         libraries=['matrix_creator_hal'],

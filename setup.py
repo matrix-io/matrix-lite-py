@@ -34,7 +34,7 @@ ext_modules = [
             get_pybind_include(user=True)
         ],
         libraries=['matrix_creator_hal'],
-        extra_compile_args=[],
+        extra_compile_args=["-O3"],
         language='c++'
     ),
 ]

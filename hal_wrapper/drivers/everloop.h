@@ -13,7 +13,7 @@ class everloop {
     public:
     everloop();
 
-    int ledCount;
+    int led_count;
     void set(py::list);
 };
 

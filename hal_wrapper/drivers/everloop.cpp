@@ -4,8 +4,6 @@
 #include "matrix_hal/everloop.h"
 #include "matrix_hal/everloop_image.h"
 #include <stdexcept>
-#include <iostream>
-#include <map>
 
 namespace py = pybind11;
 
@@ -16,36 +14,33 @@ void init_led(py::module &m) {
     py::class_<everloop>(m, "everloop")
         .def(py::init())
         .def("set", &everloop::set)
-        .def_readonly("length", &everloop::ledCount);
+        .def_readonly("length", &everloop::led_count);
 }
 
 everloop::everloop() {
     hal_everloop.Setup(&bus);
-    ledCount = bus.MatrixLeds();
+    led_count = bus.MatrixLeds();
 }
 
+// Set everloop from list of RGBW tuples [(0,0,0,0)]
 void everloop::set(py::list leds) {
     int new_leds = leds.size();
 
     // Throw error, if too many LEDs configured
-    if (everloop::ledCount < new_leds)
-        throw std::runtime_error("Index out of bounds. This device only has " + std::to_string(everloop::ledCount) + " LEDs!");
+    if (everloop::led_count < new_leds)
+        throw std::runtime_error("Index out of bounds. This device only has " + std::to_string(everloop::led_count) + " LEDs!");
 
     // Create everloop image
-    matrix_hal::EverloopImage everloop_image(everloop::ledCount);
+    matrix_hal::EverloopImage everloop_image(everloop::led_count);
     for (int i = 0; i < new_leds; i++) {
-        std::map<std::string,int> rgbw;
-
-        py::dict dict = leds[i].cast<py::dict>();
-        for (auto item : dict){
-            rgbw[std::string(py::str(item.first))]=(item.second.cast<int>());
-            std::cout << "key=" << std::string(py::str(item.first)) << ", " << "value=" << std::string(py::str(item.second)) << std::endl;
-        }
-
-        everloop_image.leds[i].red   = rgbw["r"];
-        everloop_image.leds[i].green = rgbw["g"];
-        everloop_image.leds[i].blue  = rgbw["b"];
-        everloop_image.leds[i].white = rgbw["w"];
+        auto rgbw = leds[i].cast<py::tuple>();
+        
+        // Pass tuple into everloop image.
+        int inputs = rgbw.size();
+        everloop_image.leds[i].red   = (inputs > 0) ? rgbw[0].cast<int>() : 0;
+        everloop_image.leds[i].green = (inputs > 1) ? rgbw[1].cast<int>() : 0;
+        everloop_image.leds[i].blue  = (inputs > 2) ? rgbw[2].cast<int>() : 0;
+        everloop_image.leds[i].white = (inputs > 3) ? rgbw[3].cast<int>() : 0;
     }
 
     // Render everloop image

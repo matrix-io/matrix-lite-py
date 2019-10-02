@@ -40,7 +40,7 @@ python3 -m pip install --user matrix-lite
 ```
 
 # Usage
-The matrix-lite package contains a `matrix_lite` & `halSwig` Python module. `halSwig` is the direct SWIG implementation. `matrix_lite` contains abstractions for `halSwig` and is what we will be using.
+The matrix-lite package contains a `matrix_lite` & `matrix_hal` Python module. `matrix_hal` is the direct HAL implementation. `matrix_lite` contains small abstractions for `matrix_hal` and is what we will be using.
 
 ## Everloop
 ```python

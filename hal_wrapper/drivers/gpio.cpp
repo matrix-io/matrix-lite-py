@@ -8,24 +8,14 @@ namespace py = pybind11;
 
 matrix_hal::GPIOControl gpio_control;
 
-// Convert python String to lowercase c++ string
-std::string to_lower_case(py::str py_str){
-    std::string str = py_str.cast<std::string>();
-
-    for(uint i=0;i<str.length();i++)
-        str.at(i)=std::tolower(str.at(i));
-
-    return str;
-}
-
 // Helps to easily get a 0 or 1 value for GPIO settings (setMode, setFunction, etc..)
 int parse_pin_setting(py::detail::tuple_accessor setting, std::string value_0, std::string value_1, std::string error){
     int result;
     // Get mode from a string or number
     if (py::isinstance<py::str>(setting)){
-        if (to_lower_case(setting) == value_0)
+        if (pyHelp::to_lower_case(setting) == value_0)
             result = 0;
-        else if (to_lower_case(setting) == value_1)
+        else if (pyHelp::to_lower_case(setting) == value_1)
             result = 1;
         else
             throw std::runtime_error(error);
@@ -77,3 +67,8 @@ bool gpio::setDigital(py::args args) {
 int gpio::getDigital(int pin) {
     return gpio_control.GetGPIOValue(pin);
 }
+
+bool setPWM(py::dict config) {
+    auto map = pyHelp::dict_to_map(config);
+    return gpio_control.SetPWM(map["frequency"], map["percentage"], map["pin"]);
+};

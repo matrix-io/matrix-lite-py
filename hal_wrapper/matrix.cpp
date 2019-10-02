@@ -3,6 +3,7 @@
 #include "./drivers/everloop.h"
 #include "./drivers/sensors.h"
 #include "./drivers/gpio.h"
+#include <map>
 
 // Declare bus for MATRIX hardware communication
 matrix_hal::MatrixIOBus bus;
@@ -23,4 +24,28 @@ PYBIND11_MODULE(matrix_hal, m) {
 #else
     m.attr("__version__") = "dev";
 #endif
+}
+
+// Helper functions for pybind11
+namespace pyHelp {
+    // - Convert python String to lowercase c++ string
+    std::string to_lower_case(py::str py_str){
+        std::string str = py_str.cast<std::string>();
+
+        for(uint i=0;i<str.length();i++)
+            str.at(i)=std::tolower(str.at(i));
+
+        return str;
+    }
+
+    // - Return C++ map from python dictionary
+    std::map<std::string, pybind11::handle> dict_to_map(py::dict dict){
+        std::map<std::string, pybind11::handle> map;
+        
+        for (auto item : dict)
+            map[std::string(py::str(item.first))]=item.second;
+        
+        return map;
+    }
+
 }

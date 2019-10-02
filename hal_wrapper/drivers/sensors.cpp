@@ -21,7 +21,7 @@ matrix_hal::PressureSensor pressure_sensor;
 matrix_hal::HumidityData humidity_data;
 matrix_hal::HumiditySensor humidity_sensor;
 
-// Exported sensors
+// **Exported sensors class** //
 void init_sensors(py::module &m) {
     py::class_<imu>(m, "imu")
         .def(py::init())

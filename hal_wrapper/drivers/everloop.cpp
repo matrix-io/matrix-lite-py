@@ -9,7 +9,7 @@ namespace py = pybind11;
 
 matrix_hal::Everloop hal_everloop;
 
-// Exported Everloop class
+// **Exported Everloop class** //
 void init_led(py::module &m) {
     py::class_<everloop>(m, "everloop")
         .def(py::init())

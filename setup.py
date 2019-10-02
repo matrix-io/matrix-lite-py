@@ -16,13 +16,22 @@ def getCppFiles(folders):
                 files.append(folder + '/' + file) 
     return files
 
+# Find pybind11 header files
+class get_pybind_include(object):
+    def __init__(self, user=False):
+        self.user = user
+
+    def __str__(self):
+        import pybind11
+        return pybind11.get_include(self.user)
+
 ext_modules = [
     Extension(
-        'hal',
+        'matrix_hal',
         sources=getCppFiles(['hal_wrapper', 'hal_wrapper/drivers']),
         include_dirs=[
-            #TODO: use sample pybind11 include function!
-            '/usr/local/include/python3.7',
+            get_pybind_include(),
+            get_pybind_include(user=True)
         ],
         libraries=['matrix_creator_hal'],
         extra_compile_args=[],

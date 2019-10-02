@@ -1,4 +1,4 @@
-import hal
+import matrix_hal as hal
 
 uv = hal.uv()
 imu = hal.imu()

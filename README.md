@@ -7,11 +7,11 @@ MATRIX Lite Python is a library that allows users of varying skill levels to eas
 
 # Roadmap
 - [ ] Leds
-- [ ] Sensors
-  - [ ] IMU
-  - [ ] Humidity
-  - [ ] Pressure
-  - [ ] UV
+- [x] Sensors
+  - [x] IMU
+  - [x] Humidity
+  - [x] Pressure
+  - [x] UV
 - [ ] GPIO
 - [ ] Microphones
   - [ ] Hal Mics

@@ -2,7 +2,9 @@
 #define SENSORS_SENSOR_H
 
 #include <pybind11/pybind11.h>
+
 namespace py = pybind11;
+
 void init_sensors(py::module &);
 
 class imu {

@@ -120,7 +120,7 @@ gpio.setMode(3, 'output')
 gpio.setServoAngle({
     "pin": 3,
     "angle": 90,
-    # pin, angle, min_pulse_ms (minimum pulse width for a PWM wave in milliseconds)
+    # min_pulse_ms (minimum pulse width for a PWM wave in milliseconds)
     "min_pulse_ms": 0.8,
 })
 ```

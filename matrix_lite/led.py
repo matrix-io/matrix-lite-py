@@ -1,5 +1,5 @@
 import colour # TODO remove eventually
-from matrix_hal import everloop
+from _matrix_hal import everloop
 
 _everloop = everloop()
 length = _everloop.length

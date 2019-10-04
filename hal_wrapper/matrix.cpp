@@ -14,7 +14,7 @@ bool busReady = bus.Init();
 
 // Exported Python module
 namespace py = pybind11;
-PYBIND11_MODULE(matrix_hal, m) {
+PYBIND11_MODULE(_matrix_hal, m) {
     m.doc() = R"pbdoc(Docs coming soon)pbdoc";
     init_led(m);
     init_sensors(m);

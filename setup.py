@@ -32,7 +32,7 @@ class get_pybind_include(object):
 
 ext_modules = [
     Extension(
-        'matrix_hal',
+        '_matrix_hal',
         sources=getCppFiles(['hal_wrapper', 'hal_wrapper/drivers']),
         include_dirs=[
             get_pybind_include(),

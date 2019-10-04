@@ -1,5 +1,3 @@
-# Transitioning from SWIG to PyBind11
-
 # MATRIX-Lite-Py
 [![Build Status](https://travis-ci.org/matrix-io/matrix-lite-py.svg?branch=master)](https://travis-ci.org/matrix-io/matrix-lite-py)
 
@@ -12,7 +10,7 @@ MATRIX Lite Python is a library that allows users of varying skill levels to eas
   - [x] Humidity
   - [x] Pressure
   - [x] UV
-- [ ] GPIO
+- [x] GPIO
 - [ ] Microphones
   - [ ] Hal Mics
   - [ ] ALSA Mics (available through any [ALSA wrapper](https://matrix-io.github.io/matrix-documentation/matrix-lite/py-reference/alsa-mics/))
@@ -40,7 +38,7 @@ python3 -m pip install --user matrix-lite
 ```
 
 # Usage
-The matrix-lite package contains a `matrix_lite` & `matrix_hal` Python module. `matrix_hal` is the direct HAL implementation. `matrix_lite` contains small abstractions for `matrix_hal` and is what we will be using.
+The matrix-lite package contains a `matrix_lite` & `_matrix_hal` Python module. `_matrix_hal` is the direct HAL implementation. `matrix_lite` contains small abstractions for `_matrix_hal`.
 
 ## Everloop
 ```python

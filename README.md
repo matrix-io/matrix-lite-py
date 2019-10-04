@@ -134,13 +134,9 @@ Download the repository
 ```
 git clone https://github.com/matrix-io/matrix-lite-py
 ```
->Use the commands below to compile any new changes you make.
 
-Build the Python package and generate a .whl file
+Compile and install the `matrix_lite` python package with your changes
 ```
-python3 setup.py sdist bdist_wheel
-```
-Install the new `.whl` file
-```
-python3 -m pip install dist/*.whl
+cd matrix-lite-py
+sudo python3 -m pip install ./
 ```

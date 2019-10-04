@@ -13,7 +13,7 @@ MATRIX Lite Python is a library that allows users of varying skill levels to eas
 - [x] GPIO
 - [ ] Microphones
   - [ ] Hal Mics
-  - [ ] ALSA Mics (available through any [ALSA wrapper](https://matrix-io.github.io/matrix-documentation/matrix-lite/py-reference/alsa-mics/))
+  - [x] ALSA Mics (available through any [ALSA wrapper](https://matrix-io.github.io/matrix-documentation/matrix-lite/py-reference/alsa-mics/))
 
 # Installation
 

@@ -6,6 +6,11 @@ import os
 
 __version__ = '0.0.4'
 
+# Read contents of README file
+this_directory = os.path.abspath(os.path.dirname(__file__))
+with open(os.path.join(this_directory, 'README.md'), encoding='utf-8') as f:
+    long_description = f.read()
+
 # Grabs all cppFiles in a folder
 def getCppFiles(folders):
     files = []
@@ -34,7 +39,7 @@ ext_modules = [
             get_pybind_include(user=True)
         ],
         libraries=['matrix_creator_hal'],
-        extra_compile_args=["-O3"],
+        extra_compile_args=['-O3'],
         language='c++'
     ),
 ]
@@ -69,10 +74,17 @@ setup(
     packages=['matrix_lite',],
     url='https://github.com/matrix-io/matrix-lite-py',
     description='A wrapper for MATRIX HAL in Python',
-    long_description='',
+    long_description=long_description,
+    long_description_content_type='text/markdown',
     ext_modules=ext_modules,
     install_requires=['pybind11>=2.4','colour<1'],
     setup_requires=['pybind11>=2.4'],
     cmdclass={'build_ext': BuildExt},
+    zip_safe = False,
+    classifiers=[
+        'Programming Language :: Python :: 3.4',
+        'Programming Language :: Python :: 3.5',
+        'Programming Language :: Python :: 3.7',
+    ],
     zip_safe=False,
 )

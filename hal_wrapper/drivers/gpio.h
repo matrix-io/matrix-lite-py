@@ -16,7 +16,7 @@ class gpio {
     bool setDigital(py::args);
     int  getDigital(int);
     bool setPWM(py::dict);
-    // bool setServoAngle(int pin, float angle, float min_pulse_ms);
+    bool setServoAngle(py::dict);
 };
 
 #endif

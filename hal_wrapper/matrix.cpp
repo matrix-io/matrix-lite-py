@@ -3,6 +3,7 @@
 #include "./drivers/everloop.h"
 #include "./drivers/sensors.h"
 #include "./drivers/gpio.h"
+#include "./drivers/info.h"
 #include <map>
 
 // Declare bus for MATRIX hardware communication
@@ -18,6 +19,8 @@ PYBIND11_MODULE(matrix_hal, m) {
     init_led(m);
     init_sensors(m);
     init_gpio(m);
+    init_info(m);
+
 
 #ifdef VERSION_INFO
     m.attr("__version__") = VERSION_INFO;

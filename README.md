@@ -90,7 +90,7 @@ while True:
     print(sensors.humidity.read())
     print(sensors.pressure.read())
 
-    time.sleep(0.50)
+    time.sleep(5/1000)
 ```
 
 ## GPIO

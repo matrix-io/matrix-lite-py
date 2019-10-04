@@ -8,7 +8,7 @@ namespace py = pybind11;
 
 matrix_hal::GPIOControl gpio_control;
 
-// Helps to easily get a 0 or 1 value for GPIO settings (setMode, setFunction, etc..)
+// Helper to return a 0 or 1 value for GPIO settings (setMode, setFunction, etc..)
 int parse_pin_setting(py::detail::tuple_accessor setting, std::string value_0, std::string value_1, std::string error){
     int result;
     // Get mode from a string or number
@@ -33,7 +33,9 @@ void init_gpio(py::module &m) {
         .def("setMode", &gpio::setMode)
         .def("setFunction", &gpio::setFunction)
         .def("setDigital", &gpio::setDigital)
-        .def("getDigital", &gpio::getDigital);
+        .def("getDigital", &gpio::getDigital)
+        .def("setPWM", &gpio::setPWM)
+        .def("setServoAngle", &gpio::setServoAngle);
 }
 
 gpio::gpio(){
@@ -68,7 +70,22 @@ int gpio::getDigital(int pin) {
     return gpio_control.GetGPIOValue(pin);
 }
 
-bool setPWM(py::dict config) {
-    auto map = pyHelp::dict_to_map(config);
-    return gpio_control.SetPWM(map["frequency"], map["percentage"], map["pin"]);
-};
+bool gpio::setPWM(py::dict config) {
+    // auto map = pyHelp::dict_to_map(config);
+    // return gpio_control.SetPWM(
+    //     map["frequency"].cast<float>(),
+    //     map["percentage"].cast<float>(), 
+    //     map["pin"].cast<uint16_t>()
+    // );
+    return true;
+}
+
+bool gpio::setServoAngle(py::dict config) {
+    // auto map = pyHelp::dict_to_map(config);
+    // return gpio_control.SetServoAngle(
+    //     map["angle"].cast<float>(),
+    //     map["min_pulse_ms"].cast<float>(), 
+    //     map["pin"].cast<uint16_t>()
+    // );
+    return true;
+}

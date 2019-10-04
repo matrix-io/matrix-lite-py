@@ -1,4 +1,4 @@
-from setuptools import setup, Extension
+from setuptools import setup, Extension, find_packages
 from setuptools.command.build_ext import build_ext
 import sys
 import setuptools
@@ -68,20 +68,20 @@ class BuildExt(build_ext):
         build_ext.build_extensions(self)
 
 setup(
-    name='matrix_lite',
-    version=__version__,
-    author='MATRIX',
-    packages=['matrix_lite',],
+    name='matrix-lite',
+    version =__version__,
+    author ='MATRIX',
+    packages= find_packages(),
     url='https://github.com/matrix-io/matrix-lite-py',
-    description='A wrapper for MATRIX HAL in Python',
-    long_description=long_description,
-    long_description_content_type='text/markdown',
-    ext_modules=ext_modules,
-    install_requires=['pybind11>=2.4','colour<1'],
-    setup_requires=['pybind11>=2.4'],
-    cmdclass={'build_ext': BuildExt},
+    description = 'A wrapper for MATRIX HAL in Python',
+    long_description = long_description,
+    long_description_content_type = 'text/markdown',
+    ext_modules = ext_modules,
+    install_requires = ['pybind11>=2.4','colour<1'],
+    setup_requires = ['pybind11>=2.4'],
+    cmdclass = {'build_ext': BuildExt},
     zip_safe = False,
-    classifiers=[
+    classifiers = [
         'Programming Language :: Python :: 3.4',
         'Programming Language :: Python :: 3.5',
         'Programming Language :: Python :: 3.7',

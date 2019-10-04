@@ -9,7 +9,7 @@ curl https://apt.matrix.one/doc/apt-key.gpg | sudo apt-key add -
 echo "deb https://apt.matrix.one/raspbian stretch main" | sudo tee /etc/apt/sources.list.d/matrixlabs.list
 
 # Raspberry Pi Dependencies
-sudo apt-get install -y apt-transport-https systemd
+sudo apt-get install -y apt-transport-https systemd python-pybind11
 sudo apt-get update
 
 # MATRIX Dependencies
@@ -23,10 +23,15 @@ sudo apt-get install -y python3.5-dev
 compile_lite () {
     # create python3.x enviorment
     virtualenv -p python$1 --clear env && source env/bin/activate
+
+    python3 -m pip install pybind11 --user
+
     # compile matrix-lite-py
     python3 setup.py sdist bdist_wheel
+    
     # export compiled library to shared volume
     cp dist/* /volume
+    
     # cleanup enviorment & changes
     deactivate
     git reset --hard && git add . && git clean -fdX

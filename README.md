@@ -38,7 +38,7 @@ python3 -m pip install --user matrix-lite
 ```
 
 # Usage
-The matrix-lite package contains a `matrix_lite` & `halSwig` Python module. `halSwig` is the direct SWIG implementation. `matrix_lite` contains abstractions for `halSwig` and is what we will be using.
+The matrix-lite package contains a `matrix_lite` & `_matrix_hal` Python module. `_matrix_hal` is the direct HAL implementation. `matrix_lite` contains small abstractions for `_matrix_hal`.
 
 ## Everloop
 ```python
@@ -88,7 +88,7 @@ while True:
     print(sensors.humidity.read())
     print(sensors.pressure.read())
 
-    time.sleep(0.50)
+    time.sleep(5/1000)
 ```
 
 ## GPIO
@@ -120,7 +120,7 @@ gpio.setMode(3, 'output')
 gpio.setServoAngle({
     "pin": 3,
     "angle": 90,
-    # pin, angle, min_pulse_ms (minimum pulse width for a PWM wave in milliseconds)
+    # min_pulse_ms (minimum pulse width for a PWM wave in milliseconds)
     "min_pulse_ms": 0.8,
 })
 ```
@@ -130,28 +130,13 @@ gpio.setServoAngle({
 
 If you want to contribute to matrix-lite-py, below are the steps to build locally. Each step should take place on your Raspberry Pi.
 
-Install SWIG 
-```bash
-sudo apt-get install swig
-```
-
 Download the repository
 ```
-git clone --recurse-submodules https://github.com/matrix-io/matrix-lite-py
-cd matrix-lite-py/matrix-hal-swig && git checkout master
-cd ..
-```
->Use the commands below to compile any new changes you make.
-
-Build the Python package and generate a .whl file
-```
-mkdir -p build
-swig -python -py3 -c++ -outdir build matrix-hal-swig/matrix.i
-python3 setup.py sdist bdist_wheel
-```
-Install the new `.whl` file
-```
-python3 -m pip install dist/*.whl
+git clone https://github.com/matrix-io/matrix-lite-py
 ```
 
-Your Raspberry Pi should now have a `matrix_lite` & `halSwig` module, with your changes, installed.
+Compile and install the `matrix_lite` python package with your changes
+```
+cd matrix-lite-py
+sudo python3 -m pip install ./
+```

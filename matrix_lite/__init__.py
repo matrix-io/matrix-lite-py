@@ -1,8 +1,7 @@
+import _matrix_hal as hal
+
 __name__ = "matrix_lite"
-__all__ = ["led", "gpio", "sensors", "info"]
+__all__ = ["led","sensors","gpio","info"]
 
-from matrix_lite import led, sensors, gpio
-
-# Below are HAL implementations that don't need abstractions yet
-from halSwig import info
-info = info()
+gpio = hal.gpio()
+info = hal.info()

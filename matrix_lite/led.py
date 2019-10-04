@@ -1,8 +1,8 @@
-import colour
-from halSwig import everloop, led
+import colour # TODO remove eventually
+from _matrix_hal import everloop
 
 _everloop = everloop()
-length = _everloop.ledCount
+length = _everloop.length
 
 # Colors corrected for LED
 colour.COLOR_NAME_TO_RGB["orange"] = (255, 35, 0)
@@ -12,44 +12,36 @@ colour.COLOR_NAME_TO_RGB["lightgreen"] = (20, 255, 30)
 
 # Sets the current everloop image on MATRIX Device
 def set(config = []):
-    # Map LED color to array index
+    # Individually set LEDs
     if isinstance(config, list):
-        # Create LED array with each LED off
-        everloopImage = [led(0,0,0,0)] * length
+        everloopImage = [(0,0,0,0)] * length
         
-        # Assign given colors into the LED array
+        # set each led color
         for i in range(0, len(config)):
-            rgbw = _readColor(config[i])
-            everloopImage[i] = led(rgbw['r'],rgbw['g'],rgbw['b'],rgbw['w'])
-        
+            everloopImage[i] = _readColor(config[i])
+            
         _everloop.set(everloopImage)
 
-    # Set each LED to one color
+    # Set everloop to 1 color
     elif isinstance(config, str) or isinstance(config, dict) or isinstance(config, tuple):
         rgbw = _readColor(config)
-        _everloop.set([led(rgbw['r'],rgbw['g'],rgbw['b'],rgbw['w'])] * length)
+        _everloop.set([_readColor(config)] * length)
     
-    # Throws error on invalid input
+    # Invalid input given
     else:
         raise Exception("led.set() accepts a value or list of values from: strings, tuples & dicts")
 
-# Returns RGBW of inputs: string, tuple, & dict
+# Return RGBW tuple from a string, tuple, or dict
 def _readColor(color = (0,0,0,0)):
-    # Handle dict input
+    # Convert dict input to tuple
     if isinstance(color, dict):
-        return {"r": color.get("r", 0), "g": color.get("g", 0),"b": color.get("b", 0),"w": color.get("w", 0),}
-    
-    # Handle string/tuple input #
-    rgbw = [0, 0, 0, 0]
-    offset = 1 # offset for colour.Color().rgb decimal return
+        return (color.get("r", 0), color.get("g", 0), color.get("b", 0), color.get("w", 0))
     
     # Convert string input to tuple
     if isinstance(color, str):
-        color = colour.Color(color).rgb
-        offset = 255
+        color = colour.Color(color).rgb + (0,)
+        return (int(255*color[0]),int(255*color[1]),int(255*color[2]),int(255*color[3]))
 
-    # Convert tuple to dict
-    for i, value in enumerate(color):
-        rgbw[i] = int(color[i]*offset)
+    # Tuples are already handeled by C++
 
-    return { "r": rgbw[0], "g": rgbw[1], "b": rgbw[2], "w": rgbw[3] }
+    return color

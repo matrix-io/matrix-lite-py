@@ -9,25 +9,28 @@ curl https://apt.matrix.one/doc/apt-key.gpg | sudo apt-key add -
 echo "deb https://apt.matrix.one/raspbian stretch main" | sudo tee /etc/apt/sources.list.d/matrixlabs.list
 
 # Raspberry Pi Dependencies
-sudo apt-get install -y apt-transport-https systemd python-pybind11
+sudo apt-get install -y apt-transport-https systemd
 sudo apt-get update
 
 # MATRIX Dependencies
 sudo apt-get install -y matrixio-creator-init libmatrixio-creator-hal libmatrixio-creator-hal-dev
 
 # Download available Python 3 versions
-sudo apt-get install -y python3.4-dev
+# TODO: Create Dockerimage with Python 3.5, 3.6, & 3.7 preinstalled
+# Python 3.4 is depricated in pip
 sudo apt-get install -y python3.5-dev
+# sudo apt-get install -y python3.6-dev (package not available)
+# Python 3.7 is preinstalled from docker image
 
 # Compile matrix-lite for desired Python 3 versions
 compile_lite () {
     # create python3.x enviorment
     virtualenv -p python$1 --clear env && source env/bin/activate
 
-    pip install pybind11
+    pip install pybind11 setuptools wheel
 
     # compile matrix-lite-py
-    python3 setup.py sdist bdist_wheel
+    python setup.py sdist bdist_wheel
     
     # export compiled library to shared volume
     cp dist/* /volume
@@ -37,12 +40,5 @@ compile_lite () {
     git reset --hard && git add . && git clean -fdX
 }
 
-while :
-do
-	echo "Starting endless loop"
-	sleep 10000
-done
-
-compile_lite 3.4
 compile_lite 3.5
 compile_lite 3.7

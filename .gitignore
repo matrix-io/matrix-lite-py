@@ -3,6 +3,7 @@
 __pycache__
 .vscode
 *.egg-info
+.eggs
 build
 dist
 env

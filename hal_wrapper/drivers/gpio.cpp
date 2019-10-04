@@ -20,7 +20,7 @@ int parse_pin_setting(py::detail::tuple_accessor setting, std::string value_0, s
         else
             throw std::runtime_error(error);
     }
-    else if (py::isinstance<py::int_>(setting))
+    else
         result = setting.cast<int>();
     
     return result;

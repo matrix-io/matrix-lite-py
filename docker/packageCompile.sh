@@ -24,7 +24,7 @@ compile_lite () {
     # create python3.x enviorment
     virtualenv -p python$1 --clear env && source env/bin/activate
 
-    python3 -m pip install pybind11 --user
+    pip install pybind11
 
     # compile matrix-lite-py
     python3 setup.py sdist bdist_wheel
@@ -36,6 +36,12 @@ compile_lite () {
     deactivate
     git reset --hard && git add . && git clean -fdX
 }
+
+while :
+do
+	echo "Starting endless loop"
+	sleep 10000
+done
 
 compile_lite 3.4
 compile_lite 3.5

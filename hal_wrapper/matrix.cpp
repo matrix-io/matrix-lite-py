@@ -41,7 +41,7 @@ namespace pyHelp {
         return str;
     }
 
-    // - Return C++ map from python dictionary
+    // - Return c++ map from python dictionary
     std::map<std::string, pybind11::handle> dict_to_map(py::dict dict){
         std::map<std::string, pybind11::handle> map;
         

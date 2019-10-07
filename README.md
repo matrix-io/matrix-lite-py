@@ -17,7 +17,7 @@ MATRIX Lite Python is a library that allows users of varying skill levels to eas
 
 # Installation
 
-Ensure you have a Raspberry Pi, attached with a MATRIX device, that's flashed with [Raspbian Stretch](https://www.raspberrypi.org/blog/raspbian-stretch/).
+Ensure you have a Raspberry Pi, attached with a MATRIX device, that's flashed with [Raspbian](https://www.raspberrypi.org/blog/raspbian-stretch/).
 
 ## 1. Install MATRIX HAL
 https://matrix-io.github.io/matrix-documentation/matrix-hal/getting-started/installation-package/

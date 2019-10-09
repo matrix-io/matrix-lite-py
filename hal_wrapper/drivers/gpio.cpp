@@ -71,21 +71,19 @@ int gpio::getDigital(int pin) {
 }
 
 bool gpio::setPWM(py::dict config) {
-    // auto map = pyHelp::dict_to_map(config);
-    // return gpio_control.SetPWM(
-    //     map["frequency"].cast<float>(),
-    //     map["percentage"].cast<float>(), 
-    //     map["pin"].cast<uint16_t>()
-    // );
-    return true;
+    auto map = pyHelp::dict_to_map(config);
+    return gpio_control.SetPWM(
+        map["frequency"].cast<float>(),
+        map["percentage"].cast<float>(), 
+        map["pin"].cast<uint16_t>()
+    );
 }
 
 bool gpio::setServoAngle(py::dict config) {
-    // auto map = pyHelp::dict_to_map(config);
-    // return gpio_control.SetServoAngle(
-    //     map["angle"].cast<float>(),
-    //     map["min_pulse_ms"].cast<float>(), 
-    //     map["pin"].cast<uint16_t>()
-    // );
-    return true;
+    auto map = pyHelp::dict_to_map(config);
+    return gpio_control.SetServoAngle(
+        map["angle"].cast<float>(),
+        map["min_pulse_ms"].cast<float>(), 
+        map["pin"].cast<uint16_t>()
+    );
 }

@@ -7,6 +7,8 @@ namespace py = pybind11;
 
 void init_sensors(py::module &);
 
+/////////////////////
+/////   IMU    /////
 class imu {
     public:
     imu();
@@ -14,13 +16,21 @@ class imu {
     py::object read();
 };
 
+/////////////////////
+/////   UV     /////
+typedef struct {
+    float uv;
+} _uv_values;
+
 class uv {
     public:
     uv();
 
-    py::object read();
+    _uv_values read();
 };
 
+/////////////////////
+///// HUMIDITY /////
 class humidity {
     public:
     humidity();
@@ -28,6 +38,8 @@ class humidity {
     py::object read();
 };
 
+/////////////////////
+///// PRESSURE /////
 class pressure {
     public:
     pressure();

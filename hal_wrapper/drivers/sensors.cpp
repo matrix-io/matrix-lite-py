@@ -1,4 +1,5 @@
 #include <pybind11/pybind11.h>
+#include <iostream>
 #include "./sensors.h"
 #include "../matrix.h"
 #include "matrix_hal/imu_sensor.h"
@@ -23,24 +24,32 @@ matrix_hal::HumiditySensor humidity_sensor;
 
 // **Exported sensors class** //
 void init_sensors(py::module &m) {
+    // IMU //
     py::class_<imu>(m, "imu")
         .def(py::init())
         .def("read", &imu::read);
 
+    // UV //
+    py::class_<_uv_values>(m, "_uv_values")
+        .def_readonly("uv", &_uv_values::uv);
+
     py::class_<uv>(m, "uv")
         .def(py::init())
         .def("read", &uv::read);
-    
+
+    // Pressure //
     py::class_<pressure>(m, "pressure")
         .def(py::init())
         .def("read", &pressure::read);
-    
+
+    // Humidity //
     py::class_<humidity>(m, "humidity")
         .def(py::init())
         .def("read", &humidity::read);
 }
 
-// IMU //
+/////////////////////
+/////   IMU    /////
 imu::imu(){imu_sensor.Setup(&bus);}
 py::object imu::read(){
     imu_sensor.Read(&imu_data);
@@ -62,18 +71,22 @@ py::object imu::read(){
     return data;
 }
 
-// UV //
+/////////////////////
+/////   UV     /////
 uv::uv(){uv_sensor.Setup(&bus);}
-py::object uv::read(){
+
+_uv_values uv::read(){
     uv_sensor.Read(&uv_data);
 
-    auto data = py::dict();
-    data["uv"] = uv_data.uv;
+    std::cout << imu_data.accel_x << std::endl;
 
-    return data;
+    return _uv_values{
+        uv: imu_data.accel_x
+    };
 }
 
-// Pressure //
+/////////////////////
+///// PRESSURE /////
 pressure::pressure(){pressure_sensor.Setup(&bus);}
 py::object pressure::read(){
     pressure_sensor.Read(&pressure_data);
@@ -86,7 +99,8 @@ py::object pressure::read(){
     return data;
 }
 
-// Humidity //
+/////////////////////
+///// HUMIDITY /////
 humidity::humidity(){humidity_sensor.Setup(&bus);}
 py::object humidity::read(){
     humidity_sensor.Read(&humidity_data);

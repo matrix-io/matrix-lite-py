@@ -51,7 +51,7 @@ void init_sensors(py::module &m) {
                 "\nroll: "+std::to_string(s.roll)+
                 "\nmag_x: "+std::to_string(s.mag_x)+
                 "\nmag_y: "+std::to_string(s.mag_y)+
-                "mag_z: "+std::to_string(s.mag_z);
+                "\nmag_z: "+std::to_string(s.mag_z);
             }
         );
 
@@ -64,7 +64,7 @@ void init_sensors(py::module &m) {
         .def_readonly("uv", &_uv_values::uv)
         .def("__repr__", [](const _uv_values &s) {
             return
-                "\nuv: "+std::to_string(s.uv);
+                "uv: "+std::to_string(s.uv);
             }
         );
 
@@ -78,7 +78,7 @@ void init_sensors(py::module &m) {
         .def_readonly("temperature", &_humidity_values::temperature)
         .def("__repr__", [](const _humidity_values &s) {
             return
-                "\nhumidity: "+std::to_string(s.humidity)+
+                "humidity: "+std::to_string(s.humidity)+
                 "\ntemperature: "+std::to_string(s.temperature);
             }
         );
@@ -94,7 +94,7 @@ void init_sensors(py::module &m) {
         .def_readonly("temperature", &_pressure_values::temperature)
         .def("__repr__", [](const _pressure_values &s) {
             return
-                "\naltitude: "+std::to_string(s.altitude)+
+                "altitude: "+std::to_string(s.altitude)+
                 "\npressure: "+std::to_string(s.pressure)+
                 "\ntemperature: "+std::to_string(s.temperature);
             }

@@ -9,11 +9,18 @@ void init_sensors(py::module &);
 
 /////////////////////
 /////   IMU    /////
+typedef struct {
+    float accel_x, accel_y, accel_z;
+    float gyro_x,  gyro_y,  gyro_z;
+    float yaw,     pitch,   roll;
+    float mag_x,   mag_y,   mag_z;
+} _imu_values;
+
 class imu {
     public:
     imu();
 
-    py::object read();
+    _imu_values read();
 };
 
 /////////////////////
@@ -31,20 +38,31 @@ class uv {
 
 /////////////////////
 ///// HUMIDITY /////
+typedef struct {
+    float humidity;
+    float temperature;
+} _humidity_values;
+
 class humidity {
     public:
     humidity();
 
-    py::object read();
+    _humidity_values read();
 };
 
 /////////////////////
 ///// PRESSURE /////
+typedef struct {
+    float altitude;
+    float pressure;
+    float temperature;
+} _pressure_values;
+
 class pressure {
     public:
     pressure();
 
-    py::object read();
+    _pressure_values read();
 };
 
 #endif

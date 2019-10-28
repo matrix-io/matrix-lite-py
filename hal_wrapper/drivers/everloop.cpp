@@ -24,6 +24,8 @@ everloop::everloop() {
 
 // Set everloop from list of RGBW tuples [(0,0,0,0)]
 void everloop::set(py::list leds) {
+    py::gil_scoped_release release;
+
     int new_leds = leds.size();
 
     // Throw error, if too many LEDs configured

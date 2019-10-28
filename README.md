@@ -130,12 +130,17 @@ gpio.setServoAngle({
 
 If you want to contribute to matrix-lite-py, below are the steps to build locally. Each step should take place on your Raspberry Pi.
 
-Download the repository
+Download the repository.
 ```
 git clone https://github.com/matrix-io/matrix-lite-py
 ```
 
-Compile and install the `matrix_lite` python package with your changes
+Install pybind11.
+```
+sudo python3 -m pip install pybind11
+```
+
+Compile and install the `matrix_lite` python package with your changes.
 ```
 cd matrix-lite-py
 sudo python3 -m pip install ./

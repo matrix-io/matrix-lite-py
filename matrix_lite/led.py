@@ -1,14 +1,14 @@
-from matrix_lite import colours # TODO remove eventually
+from matrix_lite import colour # TODO remove eventually
 from _matrix_hal import everloop
 
 _everloop = everloop()
 length = _everloop.length
 
 # Colors corrected for LED
-colours.COLOR_NAMES_TO_RGB["orange"] = (255, 35, 0)
-colours.COLOR_NAMES_TO_RGB["hotpink"] = (255, 5, 14)
-colours.COLOR_NAMES_TO_RGB["lightblue"] = (0, 50, 255)
-colours.COLOR_NAMES_TO_RGB["lightgreen"] = (20, 255, 30)
+colour.COLOR_NAMES_TO_RGB["orange"] = (255, 35, 0)
+colour.COLOR_NAMES_TO_RGB["hotpink"] = (255, 5, 14)
+colour.COLOR_NAMES_TO_RGB["lightblue"] = (0, 50, 255)
+colour.COLOR_NAMES_TO_RGB["lightgreen"] = (20, 255, 30)
 
 # Sets the current everloop image on MATRIX Device
 def set(config = []):
@@ -59,8 +59,8 @@ def _readColor(color = (0,0,0,0)):
             return tuple([float(int(v, 16)) for v in (r, g, b)])
 
         #Convet string input to tuple
-        elif color in colours.COLOR_NAMES_TO_RGB.keys():
-            color = colours.COLOR_NAMES_TO_RGB[color]
+        elif color in colour.COLOR_NAMES_TO_RGB.keys():
+            color = colour.COLOR_NAMES_TO_RGB[color]
             return (int (color[0]), int (color[1]), int (color[2]))
 
         return(0,0,0)

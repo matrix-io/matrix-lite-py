@@ -1,0 +1,38 @@
+name: PyPi Deployment
+on:
+  push:
+    tags:
+      - v0.*
+      - v1.*
+
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-18.04
+    steps:
+
+    - name: Download Repository
+      uses: actions/checkout@v1
+    
+    - name: Preparation 
+      run: |
+        # Required to run arm images
+        docker run --rm --privileged multiarch/qemu-user-static:register --reset
+        # Setup docker volume folder
+        mkdir -p ~/pypi_packages
+        
+    - name: Build Docker Images
+      run: |
+        docker build -t armv7l -f ./docker/armv7l.dockerfile .
+        docker build -t armv6l -f ./docker/armv6l.dockerfile .
+    
+    - name: Compile armv6l Packages
+      run: docker run -v ~/pypi_packages:/volume armv6l
+    
+    - name: Compile armv7l Packages
+      run: docker run -v ~/pypi_packages:/volume armv7l 
+
+    - name: PyPi Deployment
+      run: |
+        sudo python3 -m pip install --upgrade --no-cache-dir twine
+        sudo python3 -m twine upload -u "${{ secrets.TWINE_USERNAME }}" -p "${{ secrets.TWINE_PASSWORD }}" --skip-existing ~/pypi_packages/*

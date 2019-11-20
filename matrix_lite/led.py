@@ -55,8 +55,12 @@ def _readColor(color = (0,0,0,0)):
             #Invalid input given
             except:
                 raise ValueError("Invalid value  provided for rgb color.")
+            try:
+                return tuple([int(v, 16) for v in (r, g, b)])
 
-            return tuple([int(v, 16) for v in (r, g, b)])
+            except:
+                return 0,0,0
+
 
         #Convet string input to tuple
         elif color in colour.COLOR_NAMES_TO_RGB.keys():

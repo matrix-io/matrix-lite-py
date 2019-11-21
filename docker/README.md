@@ -1,5 +1,5 @@
 # Deploy to PyPi With Docker
-Auto deployment to [PyPi](https://pypi.org/project/matrix-lite/) is done through [TravisCI](https://travis-ci.org/).
+Auto deployment to [PyPi](https://pypi.org/project/matrix-lite/) is done through GitHub Actions.
 
 The armv6l & armv7l images are used to compile for different Raspberry Pi devices.
 

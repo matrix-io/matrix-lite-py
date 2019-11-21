@@ -1,4 +1,4 @@
-from matrix_lite import colour # TODO remove eventually
+from matrix_lite import colour
 from _matrix_hal import everloop
 
 _everloop = everloop()

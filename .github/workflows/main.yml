@@ -16,6 +16,9 @@ jobs:
     
     - name: Preparation 
       run: |
+        # Install python packaging dependancies
+        sudo apt-get install -y python3-setuptools
+        sudo python3 -m pip install --upgrade --no-cache-dir twine
         # Required to run arm images
         docker run --rm --privileged multiarch/qemu-user-static:register --reset
         # Setup docker volume folder
@@ -34,5 +37,4 @@ jobs:
 
     - name: PyPi Deployment
       run: |
-        sudo python3 -m pip install --upgrade --no-cache-dir twine
         sudo python3 -m twine upload -u "${{ secrets.TWINE_USERNAME }}" -p "${{ secrets.TWINE_PASSWORD }}" --skip-existing ~/pypi_packages/*

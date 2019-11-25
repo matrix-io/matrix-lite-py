@@ -1,14 +1,8 @@
-import colour # TODO remove eventually
+from matrix_lite import colour
 from _matrix_hal import everloop
 
 _everloop = everloop()
 length = _everloop.length
-
-# Colors corrected for LED
-colour.COLOR_NAME_TO_RGB["orange"] = (255, 35, 0)
-colour.COLOR_NAME_TO_RGB["hotpink"] = (255, 5, 14)
-colour.COLOR_NAME_TO_RGB["lightblue"] = (0, 50, 255)
-colour.COLOR_NAME_TO_RGB["lightgreen"] = (20, 255, 30)
 
 # Sets the current everloop image on MATRIX Device
 def set(config = []):
@@ -39,8 +33,36 @@ def _readColor(color = (0,0,0,0)):
     
     # Convert string input to tuple
     if isinstance(color, str):
-        color = colour.Color(color).rgb + (0,)
-        return (int(255*color[0]),int(255*color[1]),int(255*color[2]),int(255*color[3]))
+        #Convert Hex input to tuple
+        if color[0] == "#":
+            try:
+                rgb = color[1:]
+                #6 digit Hex
+                if len(rgb) == 6:
+                    r, g, b = rgb[0:2], rgb[2:4], rgb[4:6]
+                #3 digit Hex
+                elif len(rgb) == 3:
+                    r, g, b = rgb[0] * 2, rgb[1] * 2, rgb[2] * 2
+                else:
+                    raise ValueError()       
+            
+            #Invalid input given
+            except:
+                raise ValueError("Invalid value  provided for rgb color.")
+            try:
+                return tuple([int(v, 16) for v in (r, g, b)])
+
+            except:
+                return 0,0,0
+
+
+        #Convet string input to tuple
+        elif color in colour.COLOR_NAMES_TO_RGB.keys():
+            color = colour.COLOR_NAMES_TO_RGB[color]
+            return (int (color[0]), int (color[1]), int (color[2]))
+
+        return(0,0,0)
+
 
     # Tuples are already handeled by C++
 

@@ -1,5 +1,5 @@
 # MATRIX-Lite-Py
-![](https://github.com/matrix-io/matrix-lite-py/workflows/PyPi%20Deployment/badge.svg)
+[![](https://github.com/matrix-io/matrix-lite-py/workflows/PyPi%20Deployment/badge.svg)](https://pypi.org/project/matrix-lite/)
 
 MATRIX Lite Python is a library that allows users of varying skill levels to easily program their MATRIX Device.
 
